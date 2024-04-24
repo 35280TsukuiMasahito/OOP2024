@@ -19,7 +19,7 @@ namespace SalesCounter {
         public static IEnumerable<Sale> ReadSales(string filePath) {
             List<Sale> sales = new List<Sale>();
             string[] lines = File.ReadAllLines(filePath);
-            foreach (string line in lines) {
+            foreach (var line in lines) {
                 string[] items = line.Split(',');
                 Sale sale = new Sale {
                     ShopName = items[0],
@@ -32,8 +32,8 @@ namespace SalesCounter {
         }
         //店舗別の売上を求める
         public IDictionary<string, int> GetPerStoreSales() {
-            Dictionary<string, int> dict = new Dictionary<string, int>();
-            foreach (Sale sale in _sales) {
+            var dict = new Dictionary<string, int>();
+            foreach (var sale in _sales) {
                 if (dict.ContainsKey(sale.ShopName)) {
                     dict[sale.ShopName] += sale.Amount;
                 } else {
