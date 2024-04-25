@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // アセンブリに関する一般的な情報は、次の方法で制御されます。
 // 制御されます。アセンブリに関連付けられている情報を変更するには、
 // これらの属性値を変更します。
-[assembly: AssemblyTitle("DistanzeConverter")]
+[assembly: AssemblyTitle("DistanceConverter")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("DistanzeConverter")]
+[assembly: AssemblyProduct("DistanceConverter")]
 [assembly: AssemblyCopyright("Copyright ©  2024")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // このプロジェクトが COM に公開される場合、次の GUID が typelib の ID になります
-[assembly: Guid("14af419f-0c62-4738-8e93-6c4b33f40e3f")]
+[assembly: Guid("4d95d509-aadf-4f85-abff-07e6643f04bc")]
 
 // アセンブリのバージョン情報は次の 4 つの値で構成されています:
 //

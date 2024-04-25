@@ -9,13 +9,27 @@ namespace Exercise1 {
     internal class Program {
         static void Main(string[] args) {
             var songs = new Song[] {
-                new Song("xxx", "yyy", 100),
-                new Song("aaa", "bbb", 200)
+                new Song("Let it be","The Beatles",243),
+                new Song("Bridge Over","Simon & Garfunkel",293),
+                new Song("Close To You","Carpenters",276),
+                new Song("Honesty","Billy Joel",231),
+                new Song("I will Always","Whiksbsabk",273)
             };
+            var numbers = new int[] {
+                1,
+                2,
+                3,
+                4,
+                5,
+            };
+
             PrintSongs(songs);
         }
         private static void PrintSongs(Song[] songs) {
-            Console.WriteLine(@"{0:hh\:mm\:ss}", TimeSpan.FromSeconds(songs.Length));
+            foreach (var song in songs) {
+
+                Console.WriteLine(@"{0},{1},{2:mm\:ss}", song.Title,song.ArtistName,TimeSpan.FromSeconds(song.Length));
+            }
         }
     }
 }
