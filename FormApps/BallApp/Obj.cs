@@ -12,6 +12,8 @@ namespace BallApp {
         public double MoveX { get; set; }
         public double MoveY { get; set; }
 
+
+
         //コンストラクタ
         public Obj(double posX,double posY,String path) {
             PosX = posX;
@@ -19,8 +21,13 @@ namespace BallApp {
             Image = Image.FromFile(path);
         }
 
+        //int tenniscout, soccercount;
+
         //移動メソッド
         public abstract bool Move();
+        public abstract bool Move(Keys direction);
+
+
 
     }
 }

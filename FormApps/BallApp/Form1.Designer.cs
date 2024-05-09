@@ -36,7 +36,6 @@
             // timer2
             // 
             timer2.Interval = 30;
-            timer2.Tick += timer2_Tick;
             // 
             // Form1
             // 
@@ -47,6 +46,7 @@
             Name = "Form1";
             Text = "BallApp";
             Load += Form1_Load;
+            KeyDown += Form1_KeyDown;
             MouseClick += Form1_MouseClick;
             ResumeLayout(false);
         }
