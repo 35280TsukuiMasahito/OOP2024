@@ -8,12 +8,12 @@ namespace BallApp {
     internal class Bar : Obj {
         public Bar(double xp, double yp)
     : base(xp, yp, @"Picture\Bar.png") {
-            MoveX = 10; //移動量設定
+            MoveX = 20; //移動量設定
             MoveY = 0;
         }
 
 
-        public override bool Move() {
+        public override bool Move(PictureBox pbBar, PictureBox pbBall) {
             return true;
         }
 
@@ -31,7 +31,7 @@ namespace BallApp {
                 }
                     PosX -= MoveX;
             }
-            MoveX = 10;
+            MoveX = 20;
             return true;
 
         }
