@@ -33,19 +33,19 @@ namespace Exercise01 {
 
 
         private static void Exercise1_2(List<int> numbers) {
-            numbers.ForEach(s => Console.Write(s/2+""));
+            numbers.ForEach(s => Console.Write(s/2.0+","));
             Console.WriteLine("");
         }
 
         private static void Exercise1_3(List<int> numbers) {
-            var number = numbers.Where(n => n > 49);
+            var number = numbers.Where(n => 50 <=n);
             foreach(var n in number) Console.Write(n+",");
             Console.WriteLine("");
         }
 
         private static void Exercise1_4(List<int> numbers) {
             var list = numbers.Select(n => n * 2).ToList();
-            foreach (var n in list) Console.Write(n+",");
+            foreach (var n in list) Console.Write(n + ",");
         }
     }
 }

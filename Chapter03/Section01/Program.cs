@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace Section01 {
     internal class Program {
         static void Main(string[] args) {
-            var list = new List<string> {
+            var names = new List<string> {
                 "Tokyo",
                 "New Delhi",
                 "Bangkok",
@@ -19,11 +19,17 @@ namespace Section01 {
                 "Hong Kong",
             };
 
-            IEnumerable<string> quary = list.Where(s => s.Contains(' ')).Select(s => s.ToUpper());
-                                       
+            var quary = names.Where(s => s.Length <= 5).ToList();
+            foreach (var item in quary) {
+                Console.WriteLine(item);
+            }
+           
+            Console.WriteLine("------------");
 
-            foreach (String s in quary)
-               Console.WriteLine(s);
+            names[0] = "Osaka";
+            foreach (var item in quary) {
+                Console.WriteLine(item);
+            }
         }
     }
 }
