@@ -19,8 +19,11 @@ namespace Section01 {
                 "Hong Kong",
             };
 
-            var lowerList = list.ConvertAll(s => s.ToUpper());
-            lowerList.ForEach(s => Console.WriteLine(s));
+            IEnumerable<string> quary = list.Where(s => s.Contains(' ')).Select(s => s.ToUpper());
+                                       
+
+            foreach (String s in quary)
+               Console.WriteLine(s);
         }
     }
 }
