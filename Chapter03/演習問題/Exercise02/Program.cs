@@ -11,7 +11,7 @@ namespace Exercise02 {
      "Tokyo", "New Delhi", "Bangkok", "London",
                 "Paris", "Berlin", "Canberra", "Hong Kong",
 };
-            Exercise2_1(names);
+           // Exercise2_1(names);
             Console.WriteLine();
             Exercise2_2(names);
             Console.WriteLine();
@@ -21,19 +21,34 @@ namespace Exercise02 {
         }
 
         private static void Exercise2_1(List<string> names) {
-
+            Console.Write("都市を入力:");
+            do {
+                String city = Console.ReadLine();
+                if (string.IsNullOrEmpty(city)) {
+                    break;
+                }
+                int index = names.FindIndex(x => x == city);
+                Console.WriteLine(index + "番目");
+                Console.Write("都市を入力:");
+            } while (true);
         }
 
         private static void Exercise2_2(List<string> names) {
-
+            var key = "o";
+            int cnt = names.Count(n=>n.Contains(key));
+              Console.WriteLine(cnt + "個");
         }
 
         private static void Exercise2_3(List<string> names) {
-
+            var key = "o";
+            var name = names.Where(n => n.Contains(key));
+            foreach( var n in name) Console.WriteLine(n);
         }
 
         private static void Exercise2_4(List<string> names) {
-
+            var key = "B";
+            var name = names.Where(n => n.Contains(key));
+            foreach (var n in name) Console.WriteLine(n+"  "+n.Length);
         }
     }
 }
