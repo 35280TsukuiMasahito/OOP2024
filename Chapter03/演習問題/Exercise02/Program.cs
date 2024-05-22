@@ -41,14 +41,13 @@ namespace Exercise02 {
 
         private static void Exercise2_3(List<string> names) {
             var key = "o";
-            var name = names.Where(n => n.Contains(key));
+            var name = names.Where(n => n.Contains(key)).ToArray();
             foreach( var n in name) Console.WriteLine(n);
         }
 
         private static void Exercise2_4(List<string> names) {
-            var key = "B";
-            var name = names.Where(n => n.Contains(key));
-            foreach (var n in name) Console.WriteLine(n+"  "+n.Length);
+            var name = names.Where(n => n[0] == 'B').Select(n=>new { n.Length, n });
+            foreach (var obj in name) Console.WriteLine(obj.n + "," +obj.Length);
         }
     }
 }
