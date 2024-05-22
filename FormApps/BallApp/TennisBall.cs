@@ -16,7 +16,7 @@ namespace BallApp {
             Count++;
         }
 
-        public override bool Move(PictureBox pbBar, PictureBox pbBall) {
+        public override int Move(PictureBox pbBar, PictureBox pbBall) {
 
             Rectangle rBar = new Rectangle(pbBar.Location.X, pbBar.Location.Y, pbBar.Width, pbBar.Height);
 
@@ -32,15 +32,19 @@ namespace BallApp {
                 MoveY = -MoveY;
             }
 
+
+            if (PosY > 500)
+                return 0;
+
             PosX += MoveX;
             PosY += MoveY;
 
-            return true;
+            return 1;
 
 
         }
 
-        public override bool Move(Keys direction) {
+        public override int Move(Keys direction) {
             throw new NotImplementedException();
         }
     }

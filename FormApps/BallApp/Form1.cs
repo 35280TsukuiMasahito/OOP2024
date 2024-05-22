@@ -2,8 +2,10 @@ using System.Drawing.Printing;
 using System.Net;
 using System.Security.Cryptography.X509Certificates;
 using System.Security.Principal;
+using static System.Formats.Asn1.AsnWriter;
 
 namespace BallApp {
+
     public partial class Form1 : Form {
 
         //Obj ball;
@@ -16,6 +18,8 @@ namespace BallApp {
         private Bar bar;
         private PictureBox pbBar;
 
+        public int scoreCount = 0;
+
         public Form1() {
             InitializeComponent();
 
@@ -23,7 +27,7 @@ namespace BallApp {
         // フォームが最初にロードされるときに一度だけ実装される
         private void Form1_Load(object sender, EventArgs e) {
             this.Text = "BallApp SoccerBall:0 TennisBall:0";
-
+            score.Text = "Score" + scoreCount;
             bar = new Bar(340, 500);
             pbBar = new PictureBox();
             pbBar.Image = bar.Image;
@@ -31,21 +35,36 @@ namespace BallApp {
             pbBar.Size = new Size(150, 10);
             pbBar.SizeMode = PictureBoxSizeMode.StretchImage;
             pbBar.Parent = this;
-            
+
 
         }
         private void timer1_Tick(object sender, EventArgs e) {
 
 
-            // ball.Move();
+            //ball.Move();
             //pb.Location = new Point((int)ball.PosX, (int)ball.PosY);
 
             for (int i = 0; i < balls.Count; i++) {
-                balls[i].Move(pbBar, pbs[i]);
-                pbs[i].Location = new Point((int)balls[i].PosX, (int)balls[i].PosY);
+                int unnko = balls[i].Move(pbBar, pbs[i] );
+                if (unnko == 0) {
+                    pbs[i].Location = new Point((int)balls[i].PosX, (int)balls[i].PosY);
+                } 
+                if(unnko==2){
+                    pbs[i].Location = new Point((int)balls[i].PosX, (int)balls[i].PosY);
+                    scoreCount++;
+                    score.Text = "Score" + scoreCount;
+                    unnko = 0;
+                   
+                }
+                if (unnko == 1) {
 
+                    score.Text = "score-100";
+                    balls.RemoveAt(i);
+                    pbs[i].Location = new Point(2000, 2000);
+                    pbs.RemoveAt(i);
+
+                }
             }
-
             this.Text = "BallApp SoccerBall:" + SoccerBall.Count + "TennisBall:" + TennisBall.Count;
 
         }
@@ -89,10 +108,14 @@ namespace BallApp {
         }
 
         private void Form1_KeyDown(object sender, KeyEventArgs e) {
-                bar.Move(e.KeyCode);
-                pbBar.Location = new Point((int)bar.PosX, (int)bar.PosY);
-            
-            
+            bar.Move(e.KeyCode);
+            pbBar.Location = new Point((int)bar.PosX, (int)bar.PosY);
+
+
+        }
+
+        private void label1_Click(object sender, EventArgs e) {
+
         }
     }
 }

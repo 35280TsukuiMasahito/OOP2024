@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace BallApp {
     internal class Bar : Obj {
+
         public Bar(double xp, double yp)
     : base(xp, yp, @"Picture\Bar.png") {
             MoveX = 20; //移動量設定
@@ -13,11 +14,11 @@ namespace BallApp {
         }
 
 
-        public override bool Move(PictureBox pbBar, PictureBox pbBall) {
-            return true;
+        public override int Move(PictureBox pbBar, PictureBox pbBall) {
+            return 0;
         }
 
-        public override bool Move(Keys direction) {
+        public override int Move(Keys direction) {
             
             
             if (direction == Keys.Right) {
@@ -26,13 +27,13 @@ namespace BallApp {
                 }
                     PosX += MoveX;
             } else if(direction == Keys.Left) {
-                if ( PosX < 10) {
+                if ( PosX < 15) {
                     MoveX = 0;
                 }
                     PosX -= MoveX;
             }
             MoveX = 20;
-            return true;
+            return 1;
 
         }
     }
