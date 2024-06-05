@@ -51,11 +51,14 @@ namespace Exercise02 {
         }
 
         private static void Exercise2_3(List<Book> books) {
-            
+            var count = books.Where(x => x.Title.Contains("C#")).ToList();
+            var avg = count.Average(x=>x.Pages);
+            Console.WriteLine("平均:"+avg);
         }
 
         private static void Exercise2_4(List<Book> books) {
-            throw new NotImplementedException();
+            var book = books.Where(x => x.Price >= 4000).First();
+            Console.WriteLine(book.Title);
         }
 
         private static void Exercise2_5(List<Book> books) {
