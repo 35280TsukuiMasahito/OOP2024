@@ -10,6 +10,7 @@ namespace Exercise03 {
     internal class Program {
         static void Main(string[] args) {
             var text = "Jackdaws love my big sphinx of quartz";
+            var text2 = "Jackdaws,love my,big sphinx-of_quartz";
 
             Exercise3_1(text);
             Console.WriteLine("-----");
@@ -24,7 +25,12 @@ namespace Exercise03 {
             Console.WriteLine("-----");
 
             Exercise3_5(text);
+            Console.WriteLine("-----");
+
+            Exercise3_6(text);
         }
+
+       
 
         private static void Exercise3_1(string text) {
             int count = text.Count(c=>c==' ');
@@ -44,17 +50,26 @@ namespace Exercise03 {
         private static void Exercise3_4(string text) {
             String[] word = text.Split(' ');
             foreach(var w in word) {
-                if(w.Length<=4)Console.WriteLine(w);
+                if(w.Length<=4)
+                    Console.WriteLine(w);
             }
         }
 
         private static void Exercise3_5(string text) {
-            String[] word = text.Split(' ');
+            var word = text.Split(' ').ToArray();
             StringBuilder sb = new StringBuilder();
             foreach(var w in word) {
-                sb.Append(w+" ");
+                sb.Append(w);
+                sb.Append(' ');
             }
             Console.WriteLine(sb.ToString());
+        }
+
+        private static void Exercise3_6(string text2) {
+            var words = text2.Split(new[] { ' ', ',', '-', '_' }).ToArray();
+            foreach (var w in words) {
+                    Console.Write(w+' ');
+            }
         }
     }
 }
