@@ -46,12 +46,12 @@ namespace Exercise02 {
         }
 
         private static void Exercise2_2(List<Book> books) {
-            int count = books.Count(x=>x.Title.Contains("C#"));
+            var count = books.Count(x=>x.Title.Contains("C#"));
             Console.WriteLine(count);
         }
 
         private static void Exercise2_3(List<Book> books) {
-            throw new NotImplementedException();
+            
         }
 
         private static void Exercise2_4(List<Book> books) {
