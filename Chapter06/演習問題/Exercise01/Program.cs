@@ -37,11 +37,8 @@ namespace Exercise01 {
         }
 
         private static void Exercise1_3(int[] numbers) {
-            foreach (var x in numbers) {
-                String str = x.ToString();
-                Console.WriteLine(str);
-            }
-
+            var strings = numbers.Select(n=>n.ToString("0000")).ToList();
+            strings.ForEach(x => Console.WriteLine(x.ToString()));
         }
 
         private static void Exercise1_4(int[] numbers) {
