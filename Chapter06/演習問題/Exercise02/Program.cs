@@ -51,30 +51,32 @@ namespace Exercise02 {
         }
 
         private static void Exercise2_3(List<Book> books) {
-            var count = books.Where(x => x.Title.Contains("C#")).ToList();
+            var count = books.Where(x => x.Title.Contains("C#")).ToArray();
             var avg = count.Average(x=>x.Pages);
             Console.WriteLine("平均:"+avg);
         }
 
         private static void Exercise2_4(List<Book> books) {
-            var book = books.Where(x => x.Price >= 4000).First();
+            var book = books.Where(x => x.Price >= 4000).FirstOrDefault();
             Console.WriteLine(book.Title);
         }
 
         private static void Exercise2_5(List<Book> books) {
-            var hons = books.Where(x => x.Price < 4000).ToList();
+            var hons = books.Where(x => x.Price < 4000).ToArray();
             var max = hons.Max(x=>x.Pages);
             Console.WriteLine("最大ページ数" + max);
         }
 
         private static void Exercise2_6(List<Book> books) {
-            var sortbooks = books.OrderByDescending(x => x.Price).ToList();
+            var sortbooks = books.Where(x => x.Pages >= 400).OrderByDescending(x => x.Price).ToList();
             sortbooks.ForEach(x => Console.WriteLine(x.Title+"$"+x.Price));
         }
 
         private static void Exercise2_7(List<Book> books) {
-            var booklist = books.Where(x => x.Title.Contains("C#")).Where(x=>x.Pages>=500).ToList();
-            booklist.ForEach(x => Console.WriteLine(x.Title));
+            var booklist = books.Where(x => x.Title.Contains("C#")).Where(x => x.Pages <= 500);
+            foreach(var book in booklist) {
+                Console.WriteLine(book.Title);
+            }
         }
     }
     class Book {

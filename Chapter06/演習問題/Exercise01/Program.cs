@@ -42,15 +42,13 @@ namespace Exercise01 {
         }
 
         private static void Exercise1_4(int[] numbers) {
-            var sortnum = numbers.OrderBy(x => x).ToList();
-            var numlist = sortnum.Take(3).ToList();
-            numlist.ForEach(x => Console.WriteLine(x.ToString()));
+            var sortnum = numbers.OrderBy(x => x).Take(3).ToList();
+            sortnum.ForEach(x => Console.WriteLine(x.ToString()));
         }
 
         private static void Exercise1_5(int[] numbers) {
-            var result = numbers.Distinct().ToList();
-            var count = result.Where(x => x > 10).Count();
-            Console.WriteLine(count);
+            var cnt = numbers.Distinct().Count(x => x > 10);
+            Console.WriteLine(cnt);
         }
     }
 }
