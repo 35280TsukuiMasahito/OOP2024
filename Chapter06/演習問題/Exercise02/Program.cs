@@ -62,15 +62,19 @@ namespace Exercise02 {
         }
 
         private static void Exercise2_5(List<Book> books) {
-            throw new NotImplementedException();
+            var hons = books.Where(x => x.Price < 4000).ToList();
+            var max = hons.Max(x=>x.Pages);
+            Console.WriteLine("最大ページ数" + max);
         }
 
         private static void Exercise2_6(List<Book> books) {
-            throw new NotImplementedException();
+            var sortbooks = books.OrderByDescending(x => x.Price).ToList();
+            sortbooks.ForEach(x => Console.WriteLine(x.Title+"$"+x.Price));
         }
 
         private static void Exercise2_7(List<Book> books) {
-            throw new NotImplementedException();
+            var booklist = books.Where(x => x.Title.Contains("C#")).Where(x=>x.Pages>=500).ToList();
+            booklist.ForEach(x => Console.WriteLine(x.Title));
         }
     }
     class Book {
