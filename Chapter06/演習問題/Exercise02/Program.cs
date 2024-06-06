@@ -58,12 +58,13 @@ namespace Exercise02 {
 
         private static void Exercise2_4(List<Book> books) {
             var book = books.Where(x => x.Price >= 4000).FirstOrDefault();
-            Console.WriteLine(book.Title);
+            if (book != null) {
+                Console.WriteLine(book.Title);
+            }
         }
 
         private static void Exercise2_5(List<Book> books) {
-            var hons = books.Where(x => x.Price < 4000).ToArray();
-            var max = hons.Max(x=>x.Pages);
+            var max = books.Where(x => x.Price < 4000).Max(x => x.Pages);
             Console.WriteLine("最大ページ数" + max);
         }
 
@@ -73,7 +74,7 @@ namespace Exercise02 {
         }
 
         private static void Exercise2_7(List<Book> books) {
-            var booklist = books.Where(x => x.Title.Contains("C#")).Where(x => x.Pages <= 500);
+            var booklist = books.Where(x => x.Title.Contains("C#") &&x.Pages <= 500);
             foreach(var book in booklist) {
                 Console.WriteLine(book.Title);
             }
