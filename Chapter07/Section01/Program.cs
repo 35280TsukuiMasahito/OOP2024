@@ -16,9 +16,17 @@ namespace Section01 {
                 var Key = Console.ReadLine();
                 Console.Write("県庁所在地:");
                 var Value = Console.ReadLine();
-                kenchodict.Add(Key, Value);
-            }
 
+                if (kenchodict.ContainsKey(Key)) {
+                    Console.Write("上書きしますか？(y/n)");
+                    var reWrite = Console.ReadLine();
+                    if (reWrite == "n") {
+                        //上書き
+                        continue;
+                    }
+                }
+                kenchodict[Key] = Value;
+            }
             //foreach (var n in kenchodict) {
             //    Console.WriteLine(n.Key + "の県庁所在地は" + n.Value + "です");
             //}
@@ -53,46 +61,46 @@ namespace Section01 {
 
                 }
             } while (num != 9);
-                Console.WriteLine("処理を終了します");
-                return;
-            }
+            Console.WriteLine("処理を終了します");
+            return;
+        }
 
 
-                //var employeeDict = new Dictionary<int, Employee> {
-                //   { 100, new Employee(100, "清水遼久") },
-                //   { 112, new Employee(112, "芹沢洋和") },
-                //   { 125, new Employee(125, "岩瀬奈央子") },
-                //};
+        //var employeeDict = new Dictionary<int, Employee> {
+        //   { 100, new Employee(100, "清水遼久") },
+        //   { 112, new Employee(112, "芹沢洋和") },
+        //   { 125, new Employee(125, "岩瀬奈央子") },
+        //};
 
-                //var flowerDict = new Dictionary<string, int>() {
-                //      { "sunflower", 400 },
-                //      { "pansy", 300 },
-                //      { "tulip", 350 },
-                //      { "rose", 500 },
-                //      { "dahlia", 450 },
-                //};
-                ////Console.WriteLine(flowerDict["sunflower"]);
-                ////Console.WriteLine(flowerDict["dahlia"]);
+        //var flowerDict = new Dictionary<string, int>() {
+        //      { "sunflower", 400 },
+        //      { "pansy", 300 },
+        //      { "tulip", 350 },
+        //      { "rose", 500 },
+        //      { "dahlia", 450 },
+        //};
+        ////Console.WriteLine(flowerDict["sunflower"]);
+        ////Console.WriteLine(flowerDict["dahlia"]);
 
-                //employeeDict.Add(126, new Employee(126, "茂木愼")); //追加
+        //employeeDict.Add(126, new Employee(126, "茂木愼")); //追加
 
-                //var name = employeeDict.Where(e => e.Value.Name.Contains("和"));
+        //var name = employeeDict.Where(e => e.Value.Name.Contains("和"));
 
-                //foreach(var item  in employeeDict.Values) {
-                //    Console.WriteLine($"{item.Id} {item.Name}");
-                //}
+        //foreach(var item  in employeeDict.Values) {
+        //    Console.WriteLine($"{item.Id} {item.Name}");
+        //}
 
-                //var emp0 = employeeDict[100];
-                //Console.WriteLine($"{emp0.Id} {emp0.Name}"); //取り出し
-                //var emp1 = employeeDict[112];
-                //Console.WriteLine($"{emp1.Id} {emp1.Name}");
-                //var emp2 = employeeDict[125];
-                //Console.WriteLine($"{emp2.Id} {emp2.Name}");
-                //var emp3 = employeeDict[125];
-                //Console.WriteLine($"{emp3.Id} {emp3.Name}");
+        //var emp0 = employeeDict[100];
+        //Console.WriteLine($"{emp0.Id} {emp0.Name}"); //取り出し
+        //var emp1 = employeeDict[112];
+        //Console.WriteLine($"{emp1.Id} {emp1.Name}");
+        //var emp2 = employeeDict[125];
+        //Console.WriteLine($"{emp2.Id} {emp2.Name}");
+        //var emp3 = employeeDict[125];
+        //Console.WriteLine($"{emp3.Id} {emp3.Name}");
 
-                //var result = employeeDict.Remove(126); //消去
+        //var result = employeeDict.Remove(126); //消去
 
-          
     }
 }
+
