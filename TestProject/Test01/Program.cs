@@ -13,7 +13,7 @@ namespace Test01 {
             var score = new ScoreCounter("StudentScore.csv");
             var TotalBySubject = score.GetPerStudentScore();
             foreach (var obj in TotalBySubject) {
-                Console.WriteLine("{0} {1}", obj.Key, obj.Value);
+                Console.WriteLine("{0}  {1}", obj.Key, obj.Value);
             }
         }
     }
