@@ -5,8 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Section02 {
-    internal class WordsExtractor {
+    // List 7-15
+    class WordsExtractor {
         private string[] _lines;
+
         // コンストラクタ
         // ファイル以外からも抽出できるようにstring[]を引数に取る。
         public WordsExtractor(string[] lines) {
