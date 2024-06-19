@@ -17,10 +17,11 @@ namespace Section04 {
             int cnt = abbrs.cnt;
             Console.WriteLine(cnt);
 
-            abbrs.Remove("WHO");
-
-            cnt = abbrs.cnt;
-            Console.WriteLine(cnt);
+            if(abbrs.Remove("NPT"))
+                Console.WriteLine(abbrs.cnt);
+            if (abbrs.Remove("NTP"))
+                Console.WriteLine(abbrs.cnt);
+            else Console.WriteLine("削除できません");
 
             abbrs.ThreeStr();
             Console.WriteLine("--------------------------");
