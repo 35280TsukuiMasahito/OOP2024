@@ -64,7 +64,6 @@
             label1.Size = new Size(50, 25);
             label1.TabIndex = 0;
             label1.Text = "日付";
-            label1.Click += label1_Click;
             // 
             // label2
             // 
@@ -75,7 +74,6 @@
             label2.Size = new Size(69, 25);
             label2.TabIndex = 0;
             label2.Text = "記録者";
-            label2.Click += label1_Click;
             // 
             // label3
             // 
@@ -86,7 +84,6 @@
             label3.Size = new Size(63, 25);
             label3.TabIndex = 0;
             label3.Text = "メーカー";
-            label3.Click += label1_Click;
             // 
             // label4
             // 
@@ -97,7 +94,6 @@
             label4.Size = new Size(50, 25);
             label4.TabIndex = 0;
             label4.Text = "車名";
-            label4.Click += label1_Click;
             // 
             // label5
             // 
@@ -108,7 +104,6 @@
             label5.Size = new Size(67, 25);
             label5.TabIndex = 0;
             label5.Text = "レポート";
-            label5.Click += label1_Click;
             // 
             // dtpDate
             // 
@@ -149,7 +144,6 @@
             groupBox2.Size = new Size(365, 72);
             groupBox2.TabIndex = 3;
             groupBox2.TabStop = false;
-            groupBox2.Enter += groupBox1_Enter;
             // 
             // rbOther
             // 
@@ -234,7 +228,6 @@
             label6.Size = new Size(50, 25);
             label6.TabIndex = 0;
             label6.Text = "画像";
-            label6.Click += label1_Click;
             // 
             // btPicOpen
             // 
@@ -271,6 +264,7 @@
             btAddReport.TabIndex = 5;
             btAddReport.Text = "追加";
             btAddReport.UseVisualStyleBackColor = true;
+            btAddReport.Click += btAddReport_Click;
             // 
             // btModifyReport
             // 
@@ -299,7 +293,6 @@
             label7.Size = new Size(50, 25);
             label7.TabIndex = 0;
             label7.Text = "一覧";
-            label7.Click += label1_Click;
             // 
             // dgvCarReport
             // 
@@ -311,7 +304,6 @@
             dgvCarReport.ReadOnly = true;
             dgvCarReport.Size = new Size(796, 150);
             dgvCarReport.TabIndex = 7;
-            dgvCarReport.CellContentClick += dataGridView1_CellContentClick;
             // 
             // btReportOpen
             // 
