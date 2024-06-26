@@ -19,22 +19,59 @@ namespace Exercise01 {
         }
 
         private void btEx8_2_Click(object sender, EventArgs e) {
-            var today = DateTime.Now;
-            DayOfWeek dayOfWeek = DayOfWeek.Friday;
-            var days = (int)dayOfWeek - (int)(today.DayOfWeek);
+
+            var datetime = DateTime.Today;
+            var dayOfWeekJapanese = new Dictionary<DayOfWeek, string> {
+                { DayOfWeek.Sunday,   "“ú—j“ú" },
+                { DayOfWeek.Monday,   "Œ—j“ú" },
+                { DayOfWeek.Tuesday,  "‰Î—j“ú" },
+                { DayOfWeek.Wednesday,"…—j“ú" },
+                { DayOfWeek.Thursday, "–Ø—j“ú" },
+                { DayOfWeek.Friday,   "‹à—j“ú" },
+                { DayOfWeek.Saturday, "“y—j“ú" }
+            };
+            foreach(var dayofweek in Enum.GetValues(typeof(DayOfWeek))){
+                var nextDate = NextWeek(datetime, (DayOfWeek)dayofweek);
+                var str = string.Format("{0:yy/MM/dd}‚ÌŸT‚Ì{1}‚Í{2:yy/MM/dd}", datetime, dayOfWeekJapanese[(DayOfWeek)dayofweek], nextDate);
+                tbDisp.Text += str + "\r\n";
+             }
+
+        //    var today = DateTime.Now;
+        //    DayOfWeek dayOfWeek = DayOfWeek.Friday;
+        //    var days = (int)dayOfWeek - (int)(today.DayOfWeek);
+        //    if (days <= 7)
+        //        days += 7;
+        //    var nextdayweek = today.AddDays(days);
+        //    tbDisp.Text = today.ToString("yyyy/MM/dd") + "‚ÌŸT‚Ì‹à—j“ú‚Í" + nextdayweek.ToString("yyyy/MM/dd/(ddd)");
+              }
+
+        public static DateTime NextWeek(DateTime date,DayOfWeek dayofweek) {
+            var days = (int)dayofweek - (int)(date.DayOfWeek);
             if (days <= 7)
                 days += 7;
-            var nextdayweek = today.AddDays(days);
-            tbDisp.Text = today.ToString("yyyy/MM/dd") + "‚ÌŸT‚Ì‹à—j“ú‚Í" + nextdayweek.ToString("yyyy/MM/dd/(ddd)");
+            return date.AddDays(days);
         }
 
         private void btEx8_3_Click(object sender, EventArgs e) {
-            var tw = new System.Diagnostics.Stopwatch();
+            var tw = new TimeWatch();
             tw.Start();
-            int sum = 1 + 1 + 1;
-            tw.Stop();
-            TimeSpan duration = tw.Elapsed;
-            tbDisp.Text = "ˆ—ŠÔ‚Í"+duration.TotalMilliseconds +"ƒ~ƒŠ•b‚Å‚µ‚½";
+            Thread.Sleep(1000);
+            TimeSpan duration = tw.Stop();
+            var str = "ˆ—ŠÔ‚Í"+duration.TotalMilliseconds +"ƒ~ƒŠ•b‚Å‚µ‚½";
+            tbDisp.Text += str + "\r\n";
+        }
+        class TimeWatch {
+           private DateTime _time;
+
+            public void Start() {
+                _time = DateTime.Now;
+
+            }
+            public TimeSpan Stop() {
+                return DateTime.Now - _time;
+            }
+
+
         }
     }
 }
