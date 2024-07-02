@@ -31,13 +31,6 @@
             dtpDate = new DateTimePicker();
             cbAuther = new ComboBox();
             cbCarName = new ComboBox();
-            groupBox2 = new GroupBox();
-            rbOther = new RadioButton();
-            rbImport = new RadioButton();
-            rbSubaru = new RadioButton();
-            rbHonda = new RadioButton();
-            rbNissan = new RadioButton();
-            tbToyota = new RadioButton();
             tbReport = new TextBox();
             label6 = new Label();
             btPicOpen = new Button();
@@ -50,9 +43,17 @@
             dgvCarReport = new DataGridView();
             btReportOpen = new Button();
             btReportSave = new Button();
-            groupBox2.SuspendLayout();
+            rbToyota = new RadioButton();
+            rbNissan = new RadioButton();
+            rbHonda = new RadioButton();
+            rbSubaru = new RadioButton();
+            rbImport = new RadioButton();
+            rbOther = new RadioButton();
+            MakerBox = new GroupBox();
+            ofdPicFileOpen = new OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)pbPicture).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvCarReport).BeginInit();
+            MakerBox.SuspendLayout();
             SuspendLayout();
             // 
             // label1
@@ -131,86 +132,6 @@
             cbCarName.Size = new Size(200, 33);
             cbCarName.TabIndex = 2;
             // 
-            // groupBox2
-            // 
-            groupBox2.Controls.Add(rbOther);
-            groupBox2.Controls.Add(rbImport);
-            groupBox2.Controls.Add(rbSubaru);
-            groupBox2.Controls.Add(rbHonda);
-            groupBox2.Controls.Add(rbNissan);
-            groupBox2.Controls.Add(tbToyota);
-            groupBox2.Location = new Point(113, 128);
-            groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(365, 72);
-            groupBox2.TabIndex = 3;
-            groupBox2.TabStop = false;
-            // 
-            // rbOther
-            // 
-            rbOther.AutoSize = true;
-            rbOther.Location = new Point(297, 39);
-            rbOther.Name = "rbOther";
-            rbOther.Size = new Size(56, 19);
-            rbOther.TabIndex = 0;
-            rbOther.TabStop = true;
-            rbOther.Text = "その他";
-            rbOther.UseVisualStyleBackColor = true;
-            // 
-            // rbImport
-            // 
-            rbImport.AutoSize = true;
-            rbImport.Location = new Point(230, 39);
-            rbImport.Name = "rbImport";
-            rbImport.Size = new Size(61, 19);
-            rbImport.TabIndex = 0;
-            rbImport.TabStop = true;
-            rbImport.Text = "輸入車";
-            rbImport.UseVisualStyleBackColor = true;
-            // 
-            // rbSubaru
-            // 
-            rbSubaru.AutoSize = true;
-            rbSubaru.Location = new Point(170, 39);
-            rbSubaru.Name = "rbSubaru";
-            rbSubaru.Size = new Size(54, 19);
-            rbSubaru.TabIndex = 0;
-            rbSubaru.TabStop = true;
-            rbSubaru.Text = "スバル";
-            rbSubaru.UseVisualStyleBackColor = true;
-            // 
-            // rbHonda
-            // 
-            rbHonda.AutoSize = true;
-            rbHonda.Location = new Point(111, 39);
-            rbHonda.Name = "rbHonda";
-            rbHonda.Size = new Size(53, 19);
-            rbHonda.TabIndex = 0;
-            rbHonda.TabStop = true;
-            rbHonda.Text = "ホンダ";
-            rbHonda.UseVisualStyleBackColor = true;
-            // 
-            // rbNissan
-            // 
-            rbNissan.AutoSize = true;
-            rbNissan.Location = new Point(56, 39);
-            rbNissan.Name = "rbNissan";
-            rbNissan.Size = new Size(49, 19);
-            rbNissan.TabIndex = 0;
-            rbNissan.TabStop = true;
-            rbNissan.Text = "日産";
-            rbNissan.UseVisualStyleBackColor = true;
-            // 
-            // tbToyota
-            // 
-            tbToyota.AutoSize = true;
-            tbToyota.Location = new Point(0, 39);
-            tbToyota.Name = "tbToyota";
-            tbToyota.Size = new Size(50, 19);
-            tbToyota.TabIndex = 0;
-            tbToyota.TabStop = true;
-            tbToyota.Text = "トヨタ";
-            tbToyota.UseVisualStyleBackColor = true;
-            // 
             // tbReport
             // 
             tbReport.Location = new Point(111, 299);
@@ -237,6 +158,7 @@
             btPicOpen.TabIndex = 5;
             btPicOpen.Text = "開く...";
             btPicOpen.UseVisualStyleBackColor = true;
+            btPicOpen.Click += btPicOpen_Click;
             // 
             // btPicDelete
             // 
@@ -246,6 +168,7 @@
             btPicDelete.TabIndex = 5;
             btPicDelete.Text = "削除";
             btPicDelete.UseVisualStyleBackColor = true;
+            btPicDelete.Click += btPicDelete_Click;
             // 
             // pbPicture
             // 
@@ -253,6 +176,7 @@
             pbPicture.Location = new Point(611, 92);
             pbPicture.Name = "pbPicture";
             pbPicture.Size = new Size(296, 193);
+            pbPicture.SizeMode = PictureBoxSizeMode.Zoom;
             pbPicture.TabIndex = 6;
             pbPicture.TabStop = false;
             // 
@@ -283,6 +207,7 @@
             btDeleteReport.TabIndex = 5;
             btDeleteReport.Text = "削除";
             btDeleteReport.UseVisualStyleBackColor = true;
+            btDeleteReport.Click += btDeleteReport_Click;
             // 
             // label7
             // 
@@ -300,10 +225,13 @@
             dgvCarReport.AllowUserToDeleteRows = false;
             dgvCarReport.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvCarReport.Location = new Point(111, 432);
+            dgvCarReport.MultiSelect = false;
             dgvCarReport.Name = "dgvCarReport";
             dgvCarReport.ReadOnly = true;
+            dgvCarReport.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvCarReport.Size = new Size(796, 150);
             dgvCarReport.TabIndex = 7;
+            dgvCarReport.Click += dgvCarReport_Click;
             // 
             // btReportOpen
             // 
@@ -323,6 +251,90 @@
             btReportSave.Text = "保存...";
             btReportSave.UseVisualStyleBackColor = true;
             // 
+            // rbToyota
+            // 
+            rbToyota.AutoSize = true;
+            rbToyota.Location = new Point(0, 39);
+            rbToyota.Name = "rbToyota";
+            rbToyota.Size = new Size(50, 19);
+            rbToyota.TabIndex = 0;
+            rbToyota.TabStop = true;
+            rbToyota.Text = "トヨタ";
+            rbToyota.UseVisualStyleBackColor = true;
+            // 
+            // rbNissan
+            // 
+            rbNissan.AutoSize = true;
+            rbNissan.Location = new Point(56, 39);
+            rbNissan.Name = "rbNissan";
+            rbNissan.Size = new Size(49, 19);
+            rbNissan.TabIndex = 0;
+            rbNissan.TabStop = true;
+            rbNissan.Text = "日産";
+            rbNissan.UseVisualStyleBackColor = true;
+            // 
+            // rbHonda
+            // 
+            rbHonda.AutoSize = true;
+            rbHonda.Location = new Point(111, 39);
+            rbHonda.Name = "rbHonda";
+            rbHonda.Size = new Size(53, 19);
+            rbHonda.TabIndex = 0;
+            rbHonda.TabStop = true;
+            rbHonda.Text = "ホンダ";
+            rbHonda.UseVisualStyleBackColor = true;
+            // 
+            // rbSubaru
+            // 
+            rbSubaru.AutoSize = true;
+            rbSubaru.Location = new Point(170, 39);
+            rbSubaru.Name = "rbSubaru";
+            rbSubaru.Size = new Size(54, 19);
+            rbSubaru.TabIndex = 0;
+            rbSubaru.TabStop = true;
+            rbSubaru.Text = "スバル";
+            rbSubaru.UseVisualStyleBackColor = true;
+            // 
+            // rbImport
+            // 
+            rbImport.AutoSize = true;
+            rbImport.Location = new Point(230, 39);
+            rbImport.Name = "rbImport";
+            rbImport.Size = new Size(61, 19);
+            rbImport.TabIndex = 0;
+            rbImport.TabStop = true;
+            rbImport.Text = "輸入車";
+            rbImport.UseVisualStyleBackColor = true;
+            // 
+            // rbOther
+            // 
+            rbOther.AutoSize = true;
+            rbOther.Location = new Point(297, 39);
+            rbOther.Name = "rbOther";
+            rbOther.Size = new Size(56, 19);
+            rbOther.TabIndex = 0;
+            rbOther.TabStop = true;
+            rbOther.Text = "その他";
+            rbOther.UseVisualStyleBackColor = true;
+            // 
+            // MakerBox
+            // 
+            MakerBox.Controls.Add(rbOther);
+            MakerBox.Controls.Add(rbImport);
+            MakerBox.Controls.Add(rbSubaru);
+            MakerBox.Controls.Add(rbHonda);
+            MakerBox.Controls.Add(rbNissan);
+            MakerBox.Controls.Add(rbToyota);
+            MakerBox.Location = new Point(113, 128);
+            MakerBox.Name = "MakerBox";
+            MakerBox.Size = new Size(365, 72);
+            MakerBox.TabIndex = 3;
+            MakerBox.TabStop = false;
+            // 
+            // ofdPicFileOpen
+            // 
+            ofdPicFileOpen.FileName = "openFileDialog1";
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -338,7 +350,7 @@
             Controls.Add(btAddReport);
             Controls.Add(btPicOpen);
             Controls.Add(tbReport);
-            Controls.Add(groupBox2);
+            Controls.Add(MakerBox);
             Controls.Add(cbCarName);
             Controls.Add(cbAuther);
             Controls.Add(dtpDate);
@@ -351,10 +363,11 @@
             Controls.Add(label1);
             Name = "Form1";
             Text = "試乗レポート管理システム";
-            groupBox2.ResumeLayout(false);
-            groupBox2.PerformLayout();
+            Load += Form1_Load;
             ((System.ComponentModel.ISupportInitialize)pbPicture).EndInit();
             ((System.ComponentModel.ISupportInitialize)dgvCarReport).EndInit();
+            MakerBox.ResumeLayout(false);
+            MakerBox.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -369,13 +382,6 @@
         private DateTimePicker dtpDate;
         private ComboBox cbAuther;
         private ComboBox cbCarName;
-        private GroupBox groupBox2;
-        private RadioButton rbOther;
-        private RadioButton rbImport;
-        private RadioButton rbSubaru;
-        private RadioButton rbHonda;
-        private RadioButton rbNissan;
-        private RadioButton tbToyota;
         private TextBox tbReport;
         private Label label6;
         private Button btPicOpen;
@@ -388,5 +394,13 @@
         private DataGridView dgvCarReport;
         private Button btReportOpen;
         private Button btReportSave;
+        private RadioButton rbToyota;
+        private RadioButton rbNissan;
+        private RadioButton rbHonda;
+        private RadioButton rbSubaru;
+        private RadioButton rbImport;
+        private RadioButton rbOther;
+        private GroupBox MakerBox;
+        private OpenFileDialog ofdPicFileOpen;
     }
 }
