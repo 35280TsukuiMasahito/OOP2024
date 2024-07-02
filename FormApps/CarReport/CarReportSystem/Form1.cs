@@ -86,5 +86,20 @@ namespace CarReportSystem {
                 listCarReports.RemoveAt(dgvCarReport.CurrentRow.Index);
             }
         }
+
+        private void btModifyReport_Click(object sender, EventArgs e) {　//データグリッドビューの修正
+            if (dgvCarReport.CurrentRow != null) {
+                int index = dgvCarReport.CurrentRow.Index;
+                CarReport selectedReport = listCarReports[index];
+
+                selectedReport.Date = dtpDate.Value;
+                selectedReport.Auther = cbAuther.Text;
+                selectedReport.Maker = GetRadioButtonMaker();
+                selectedReport.CarName = cbCarName.Text;
+                selectedReport.Report = tbReport.Text;
+                selectedReport.Picture = pbPicture.Image;
+                dgvCarReport.Refresh();
+            }
+        }
     }
 }
