@@ -51,9 +51,12 @@
             rbOther = new RadioButton();
             MakerBox = new GroupBox();
             ofdPicFileOpen = new OpenFileDialog();
+            statusStrip1 = new StatusStrip();
+            tssb = new ToolStripStatusLabel();
             ((System.ComponentModel.ISupportInitialize)pbPicture).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvCarReport).BeginInit();
             MakerBox.SuspendLayout();
+            statusStrip1.SuspendLayout();
             SuspendLayout();
             // 
             // label1
@@ -336,11 +339,26 @@
             // 
             ofdPicFileOpen.FileName = "openFileDialog1";
             // 
+            // statusStrip1
+            // 
+            statusStrip1.Items.AddRange(new ToolStripItem[] { tssb });
+            statusStrip1.Location = new Point(0, 592);
+            statusStrip1.Name = "statusStrip1";
+            statusStrip1.Size = new Size(936, 22);
+            statusStrip1.TabIndex = 8;
+            statusStrip1.Text = "statusStrip1";
+            // 
+            // tssb
+            // 
+            tssb.Name = "tssb";
+            tssb.Size = new Size(0, 17);
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(936, 614);
+            Controls.Add(statusStrip1);
             Controls.Add(dgvCarReport);
             Controls.Add(pbPicture);
             Controls.Add(btPicDelete);
@@ -369,6 +387,8 @@
             ((System.ComponentModel.ISupportInitialize)dgvCarReport).EndInit();
             MakerBox.ResumeLayout(false);
             MakerBox.PerformLayout();
+            statusStrip1.ResumeLayout(false);
+            statusStrip1.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -403,5 +423,7 @@
         private RadioButton rbOther;
         private GroupBox MakerBox;
         private OpenFileDialog ofdPicFileOpen;
+        private StatusStrip statusStrip1;
+        private ToolStripStatusLabel tssb;
     }
 }
