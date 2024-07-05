@@ -100,7 +100,7 @@ namespace CarReportSystem {
         }
 
         private void dgvCarReport_Click(object sender, EventArgs e) {
-            if (dgvCarReport.Rows.Count == 0) return;
+            if ((dgvCarReport.Rows.Count == 0)　|| (!dgvCarReport.CurrentRow.Selected)) return;
             dtpDate.Value = (DateTime)dgvCarReport.CurrentRow.Cells["Date"].Value;
             cbAuther.Text = (string)dgvCarReport.CurrentRow.Cells["Auther"].Value;
             setRadioRuttonMaker((CarReport.MakerGroup)dgvCarReport.CurrentRow.Cells["Maker"].Value);
@@ -135,19 +135,25 @@ namespace CarReportSystem {
         }
 
         private void btDeleteReport_Click(object sender, EventArgs e) { //データグリッドビューを消す
-            if (dgvCarReport.CurrentRow == null) {
+            if ((dgvCarReport.Rows.Count == 0) || (!dgvCarReport.CurrentRow.Selected)) {
                 tssb.Text = "削除するデータがありません";
                 return;
             }
             listCarReports.RemoveAt(dgvCarReport.CurrentRow.Index);
             tssb.Text = "";
             dgvCarReport.ClearSelection();
+            Clear();
         }
 
         private void btModifyReport_Click(object sender, EventArgs e) { //データグリッドビューの修正
 
             if (dgvCarReport.CurrentRow == null) {
                 tssb.Text = "修正するデータがありません";
+                return;
+            }
+            if (cbAuther.Text == "" || cbCarName.Text == "") {
+                tssb.Text = "記録者と車名を入力してください";
+                //MessageBox.Show("記録者と車名を入力してください。", "入力エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
