@@ -39,9 +39,10 @@ namespace CarReportSystem {
         }
 
         private void Clear() {
+            dtpDate.Text = DateTime.Now.ToString();
             cbAuther.Text = "";
+            setRadioRuttonMaker(CarReport.MakerGroup.なし);
             cbCarName.Text = "";
-            NotRadioButtonMaker();
             tbReport.Text = "";
             pbPicture.Image = null;
         }
@@ -109,6 +110,9 @@ namespace CarReportSystem {
         }
         private void setRadioRuttonMaker(CarReport.MakerGroup makerGroup) {
             switch (makerGroup) {
+                case CarReport.MakerGroup.なし:
+                    NotRadioButtonMaker();
+                    break;
                 case CarReport.MakerGroup.トヨタ:
                     rbToyota.Checked = true;
                     break;
@@ -137,6 +141,7 @@ namespace CarReportSystem {
             }
             listCarReports.RemoveAt(dgvCarReport.CurrentRow.Index);
             tssb.Text = "";
+            dgvCarReport.ClearSelection();
         }
 
         private void btModifyReport_Click(object sender, EventArgs e) { //データグリッドビューの修正
@@ -165,7 +170,17 @@ namespace CarReportSystem {
             setCbAuther(listCarReports[dgvCarReport.CurrentRow.Index].Auther);
             setCbCarName(listCarReports[dgvCarReport.CurrentRow.Index].CarName);
 
+            dgvCarReport.ClearSelection();
+
             dgvCarReport.Refresh();       //データグリッドビューの更新
+        }
+
+        private void cbAuther_TextChanged(object sender, EventArgs e) {
+            tssb.Text = "";
+        }
+
+        private void cbCarName_TextChanged(object sender, EventArgs e) {
+            tssb.Text = "";
         }
     }
 }

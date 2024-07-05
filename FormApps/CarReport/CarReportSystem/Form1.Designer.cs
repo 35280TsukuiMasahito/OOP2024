@@ -125,6 +125,7 @@
             cbAuther.Name = "cbAuther";
             cbAuther.Size = new Size(200, 33);
             cbAuther.TabIndex = 2;
+            cbAuther.TextChanged += cbAuther_TextChanged;
             // 
             // cbCarName
             // 
@@ -134,6 +135,7 @@
             cbCarName.Name = "cbCarName";
             cbCarName.Size = new Size(200, 33);
             cbCarName.TabIndex = 2;
+            cbCarName.TextChanged += cbCarName_TextChanged;
             // 
             // tbReport
             // 
