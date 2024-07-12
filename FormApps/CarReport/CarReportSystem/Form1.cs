@@ -1,6 +1,9 @@
 using System.ComponentModel;
 using System.Diagnostics.Metrics;
+using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Xml;
+using System.Xml.Serialization;
 
 namespace CarReportSystem {
     public partial class Form1 : Form {
@@ -10,6 +13,8 @@ namespace CarReportSystem {
             InitializeComponent();
             dgvCarReport.DataSource = listCarReports;
         }
+        //設定インスタンス
+        Settings settings = new Settings();
 
         private void btAddReport_Click(object sender, EventArgs e) {
 
@@ -93,6 +98,8 @@ namespace CarReportSystem {
             //交互に色を設定(データグリッドビュー)
             dgvCarReport.RowsDefaultCellStyle.BackColor = Color.AliceBlue;
             dgvCarReport.AlternatingRowsDefaultCellStyle.BackColor = Color.FloralWhite;
+
+            DeserializeSettings();
         }
 
         private void btPicOpen_Click(object sender, EventArgs e) {
@@ -278,8 +285,52 @@ namespace CarReportSystem {
                 Application.Exit();
         }
 
-        private void 色設定ToolStripMenuItem_Click(object sender, EventArgs e) {
 
+
+        private void 色設定ToolStripMenuItem_Click(object sender, EventArgs e) {
+            // ダイアログの結果を確認
+            if (cdColor.ShowDialog() == DialogResult.OK) {
+                // 選択された色を背景色に設定
+                this.BackColor = cdColor.Color;
+                settings.MainFormColor = this.BackColor.ToArgb();
+            }
+        }
+
+        private void Form1_FormClosed(object sender, FormClosedEventArgs e) {
+            SerializeSettings();
+        }
+
+        private void SerializeSettings() {
+            try {
+                using (var writer = XmlWriter.Create("setting.xml")) {
+                    XmlSerializer serializer = new XmlSerializer(typeof(Settings));
+                    serializer.Serialize(writer, settings);
+                }
+            }
+            catch (Exception ex) {
+                MessageBox.Show($"Error saving settings: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+
+        }
+        private void DeserializeSettings() {
+            try {
+                if (File.Exists("setting.xml")) {
+                    using (var reader = new StreamReader("setting.xml")) {
+                        var serializer = new XmlSerializer(typeof(Settings));
+                        settings = serializer.Deserialize(reader) as Settings; 
+
+                        // Apply loaded settings
+                        BackColor = Color.FromArgb(settings.MainFormColor);
+                        settings.MainFormColor = BackColor.ToArgb();
+                    }
+                }else {
+                    tssb.Text = "色情報ファイルがありません";
+                }
+            }
+            catch (Exception ex) {
+                
+            }
         }
     }
 }

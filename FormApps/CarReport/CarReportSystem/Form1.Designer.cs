@@ -61,6 +61,7 @@
             toolStripSeparator1 = new ToolStripSeparator();
             色設定ToolStripMenuItem = new ToolStripMenuItem();
             終了ToolStripMenuItem = new ToolStripMenuItem();
+            cdColor = new ColorDialog();
             ((System.ComponentModel.ISupportInitialize)pbPicture).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvCarReport).BeginInit();
             MakerBox.SuspendLayout();
@@ -445,6 +446,7 @@
             MaximizeBox = false;
             Name = "Form1";
             Text = "試乗レポート管理システム";
+            FormClosed += Form1_FormClosed;
             Load += Form1_Load;
             ((System.ComponentModel.ISupportInitialize)pbPicture).EndInit();
             ((System.ComponentModel.ISupportInitialize)dgvCarReport).EndInit();
@@ -498,5 +500,6 @@
         private ToolStripMenuItem 色設定ToolStripMenuItem;
         private ToolStripSeparator toolStripSeparator1;
         private ToolStripMenuItem 終了ToolStripMenuItem;
+        private ColorDialog cdColor;
     }
 }
