@@ -1,5 +1,6 @@
 using System.ComponentModel;
 using System.Diagnostics.Metrics;
+using System.Runtime;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Xml;
@@ -9,13 +10,16 @@ namespace CarReportSystem {
     public partial class Form1 : Form {
 
         BindingList<CarReport> listCarReports = new BindingList<CarReport>();
+        Settings settings = Settings.GetInstance();
+
         public Form1() {
             InitializeComponent();
             dgvCarReport.DataSource = listCarReports;
-        }
-        //設定インスタンス
-        Settings settings = new Settings();
 
+
+        }
+
+        //設定インスタンス
         private void btAddReport_Click(object sender, EventArgs e) {
 
             if (cbAuther.Text == "" || cbCarName.Text == "") {
@@ -291,8 +295,8 @@ namespace CarReportSystem {
             // ダイアログの結果を確認
             if (cdColor.ShowDialog() == DialogResult.OK) {
                 // 選択された色を背景色に設定
-                this.BackColor = cdColor.Color;
-                settings.MainFormColor = this.BackColor.ToArgb();
+                BackColor = cdColor.Color;
+                settings.MainFormColor = BackColor.ToArgb();
             }
         }
 
@@ -318,19 +322,26 @@ namespace CarReportSystem {
                 if (File.Exists("setting.xml")) {
                     using (var reader = new StreamReader("setting.xml")) {
                         var serializer = new XmlSerializer(typeof(Settings));
-                        settings = serializer.Deserialize(reader) as Settings; 
+                        settings = serializer.Deserialize(reader) as Settings;
 
                         // Apply loaded settings
                         BackColor = Color.FromArgb(settings.MainFormColor);
                         settings.MainFormColor = BackColor.ToArgb();
                     }
-                }else {
+                } else {
                     tssb.Text = "色情報ファイルがありません";
                 }
             }
             catch (Exception ex) {
-                
+
             }
+        }
+
+
+        private void このアプリについてToolStripMenuItem_Click(object sender, EventArgs e) {
+            var fmversion = new fmVersion();
+           // fmversion.ShowDialog();
+            fmversion.ShowDialog();
         }
     }
 }
