@@ -87,13 +87,13 @@ namespace Exercise01 {
             xdoc.Save("Ballsports.xml");
         }
         public static void AddSportFromInput(XDocument xdoc) {
-            Console.Write("競技名（漢字）を入力してください: ");
+            Console.Write("名称: ");
             var kanjiName = Console.ReadLine();
-            Console.Write("競技名（カタカナ）を入力してください: ");
+            Console.Write("漢字 :");
             var katakanaName = Console.ReadLine();
-            Console.Write("チームメンバー数を入力してください: ");
+            Console.Write("人数: ");
             var teamMembers = Console.ReadLine();
-            Console.Write("初めてプレイされた年を入力してください: ");
+            Console.Write("起源: ");
             var firstPlayed = Console.ReadLine();
 
             var sport = new XElement("ballsport",
