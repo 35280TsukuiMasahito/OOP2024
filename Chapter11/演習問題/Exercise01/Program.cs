@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Xml.Linq;
 
 namespace Exercise01 {
@@ -22,8 +21,6 @@ namespace Exercise01 {
             var newfile = "sports.xml";
             Exercise1_4(file, newfile);
         }
-
-
 
         public static void Exercise1_1(string file) {
             var xdoc = XDocument.Load(file);
@@ -47,10 +44,10 @@ namespace Exercise01 {
                 var xfirstplayed = x.Element("firstplayed").Value;
                 Console.WriteLine($"競技名: {xname}, 初めてプレイされた年: {xfirstplayed}");
             }
-    }
+        }
 
         private static void Exercise1_3(string file) {
-            //メンバー人数が最も多い競技を出力
+            // メンバー人数が最も多い競技を出力
             var xdoc = XDocument.Load(file);
             var xelements = xdoc.Root.Elements("ballsport");
 
@@ -64,55 +61,56 @@ namespace Exercise01 {
 
         private static void Exercise1_4(string file, string newfile) {
             var xdoc = XDocument.Load(file);
-            AddSoccer(xdoc);
+            AddSoccer(xdoc, newfile);
 
             Console.WriteLine();
-            AddSportFromInput(xdoc);
+            AddSportFromInput(file, newfile);
+            xdoc.Save(newfile);
         }
-        public static void AddSoccer(XDocument xdoc) {
+
+        public static void AddSoccer(XDocument xdoc, string newfile) {
             var soccer = new XElement("ballsport",
-                new XElement("name","サッカー", new XAttribute("kanji", "蹴球")),
+                new XElement("name", "サッカー", new XAttribute("kanji", "蹴球")),
                 new XElement("teammembers", "11"),
                 new XElement("firstplayed", "1863")
             );
-
-            xdoc.Root.Add(soccer);
-
-            // 確認用のコード
             foreach (var x in xdoc.Root.Elements("ballsport")) {
                 var xname = x.Element("name").Value;
                 var xint = x.Element("teammembers").Value;
                 Console.WriteLine($"競技名: {xname}, 人数: {xint}");
             }
-            xdoc.Save("Ballsports.xml");
+            xdoc.Save(newfile);
         }
-        public static void AddSportFromInput(XDocument xdoc) {
-            Console.Write("名称: ");
-            var kanjiName = Console.ReadLine();
-            Console.Write("漢字 :");
-            var katakanaName = Console.ReadLine();
-            Console.Write("人数: ");
-            var teamMembers = Console.ReadLine();
-            Console.Write("起源: ");
-            var firstPlayed = Console.ReadLine();
 
-            var sport = new XElement("ballsport",
-                new XElement("name", katakanaName, new XAttribute("kanji", kanjiName)),
-                new XElement("teammembers", teamMembers),
-                new XElement("firstplayed", firstPlayed)
-            );
+        public static void AddSportFromInput(String file, string newfile) {
+            List<XElement> xElements = new List<XElement>();
 
-            xdoc.Root.Add(sport);
+            var xdoc = XDocument.Load(file);
+            string name, kanji, teammembers, firstplayed;
+            int nextFlag;
+            while (true) {
+                //入力処理
+                Console.Write("名称："); name = Console.ReadLine();
+                Console.Write("漢字："); kanji = Console.ReadLine();
+                Console.Write("人数："); teammembers = Console.ReadLine();
+                Console.Write("起源："); firstplayed = Console.ReadLine();
+                //1件分の要素作成
+                var element = new XElement("ballsport",
+                     new XElement("name", name, new XAttribute("kanji", kanji)),
+                     new XElement("teammembers", teammembers),
+                     new XElement("firstplayed", firstplayed)
+                );
+                xElements.Add(element); //リストへ要素を追加
 
-            // 確認用のコード
-
-                var xname = sport.Element("name").Value;
-                var xint = sport.Element("teammembers").Value;
-                Console.WriteLine($"競技名: {xname}, 人数: {xint}");
-            
-
-            // 追加したスポーツ情報を保存
-            xdoc.Save("updated_sample.xml");
+                Console.WriteLine();    //改行
+                Console.Write("追加【1】保存【２】");
+                Console.Write(">");
+                nextFlag = int.Parse(Console.ReadLine());
+                if (nextFlag == 2) break;  //無限ループを抜ける
+                Console.WriteLine();    //改行
+            }
+            xdoc.Root.Add(xElements);
+            xdoc.Save(newfile); //保存
         }
     }
 }
