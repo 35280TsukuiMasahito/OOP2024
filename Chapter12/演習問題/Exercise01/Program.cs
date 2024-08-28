@@ -4,7 +4,11 @@ using System.Data.SqlTypes;
 using System.IO;
 using System.Linq;
 using System.Runtime.Serialization;
+using System.Runtime.Serialization.Json;
 using System.Text;
+using System.Text.Encodings.Web;
+using System.Text.Json;
+using System.Text.Unicode;
 using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Serialization;
@@ -65,6 +69,11 @@ namespace Exercise01 {
                 serializer.WriteObject(writer, employees);
             }
 
+
+        }
+
+        private static void Exercise1_3(string filePath) {
+
             // XMLファイルから配列をデシリアル化
             using (var reader = XmlReader.Create(filePath)) {
                 var serializer = new DataContractSerializer(typeof(Employee[]));
@@ -79,10 +88,26 @@ namespace Exercise01 {
             }
         }
 
-                private static void Exercise1_3(string v) {
-        }
-
         private static void Exercise1_4(string v) {
+            var employees = new Employee[]
+   {
+        new Employee { Id = 1, Name = "沢村勇気", HireDate = new DateTime(2023, 1, 15) },
+        new Employee { Id = 2, Name = "重野重蔵", HireDate = new DateTime(2023, 3, 22) },
+        new Employee { Id = 3, Name = "館内綾香", HireDate = new DateTime(2023, 5, 30) }
+   };
+
+            using (var stream = new FileStream("employees.json", FileMode.Create, FileAccess.Write)) {
+                var serializer = new DataContractJsonSerializer(employees.GetType());
+                serializer.WriteObject(stream, employees);
+            }
+
+            var options = new JsonSerializerOptions {
+                Encoder = JavaScriptEncoder.Create(UnicodeRanges.All),
+                WriteIndented = true,
+            };
+
+            string jsonString = JsonSerializer.Serialize(employees, options);
+            Console.WriteLine(jsonString);
         }
     }
 }
