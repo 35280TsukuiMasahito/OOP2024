@@ -108,6 +108,7 @@ namespace Exercise01 {
 
             string jsonString = JsonSerializer.Serialize(employees, options);
             Console.WriteLine(jsonString);
+
         }
     }
 }
