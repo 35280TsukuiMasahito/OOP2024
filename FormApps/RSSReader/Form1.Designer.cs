@@ -28,8 +28,8 @@
             this.lbRssTitle = new System.Windows.Forms.ListBox();
             this.webView21 = new Microsoft.Web.WebView2.WinForms.WebView2();
             this.cb = new System.Windows.Forms.ComboBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.URL = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.webView21)).BeginInit();
             this.SuspendLayout();
             // 
@@ -63,6 +63,7 @@
             // webView21
             // 
             this.webView21.AllowExternalDrop = true;
+            this.webView21.BackColor = System.Drawing.SystemColors.Control;
             this.webView21.CreationProperties = null;
             this.webView21.DefaultBackgroundColor = System.Drawing.Color.White;
             this.webView21.Location = new System.Drawing.Point(27, 227);
@@ -80,29 +81,32 @@
             this.cb.TabIndex = 5;
             this.cb.SelectedIndexChanged += new System.EventHandler(this.cb_SelectedIndexChanged);
             // 
-            // textBox1
+            // URL
             // 
-            this.textBox1.Location = new System.Drawing.Point(64, 23);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(36, 19);
-            this.textBox1.TabIndex = 6;
-            this.textBox1.Text = "URL";
+            this.URL.AutoSize = true;
+            this.URL.Location = new System.Drawing.Point(82, 34);
+            this.URL.Name = "URL";
+            this.URL.Size = new System.Drawing.Size(27, 12);
+            this.URL.TabIndex = 8;
+            this.URL.Text = "URL";
             // 
-            // textBox2
+            // label1
             // 
-            this.textBox2.Location = new System.Drawing.Point(53, 62);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(56, 19);
-            this.textBox2.TabIndex = 7;
-            this.textBox2.Text = "お気に入り";
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(66, 69);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(56, 12);
+            this.label1.TabIndex = 9;
+            this.label1.Text = "お気に入り";
             // 
             // RSSリーダー
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(990, 716);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.URL);
             this.Controls.Add(this.cb);
             this.Controls.Add(this.webView21);
             this.Controls.Add(this.lbRssTitle);
@@ -123,8 +127,8 @@
         private System.Windows.Forms.ListBox lbRssTitle;
         private Microsoft.Web.WebView2.WinForms.WebView2 webView21;
         private System.Windows.Forms.ComboBox cb;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Label URL;
+        private System.Windows.Forms.Label label1;
     }
 }
 
