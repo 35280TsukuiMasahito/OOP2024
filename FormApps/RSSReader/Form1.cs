@@ -117,5 +117,32 @@ namespace RSSReader {
             public string Link { get; set; }
         }
 
+        private void button2_Click(object sender, EventArgs e) {
+            // 「お気に入り」カテゴリが選択されている場合
+            if (cb.SelectedItem.ToString() == "お気に入り") {
+                if (lbRssTitle.SelectedItem != null) {
+                    // 選択されたタイトルを取得
+                    var selectedTitle = lbRssTitle.SelectedItem.ToString();
+                    var itemToRemove = favoriteItems.FirstOrDefault(item => item.Title == selectedTitle);
+
+                    // お気に入りリストからアイテムを削除
+                    if (itemToRemove != null) {
+                        favoriteItems.Remove(itemToRemove);
+                        lbRssTitle.Items.Remove(selectedTitle); // リストボックスからも削除
+
+                        // リストが空になった場合の処理（オプション）
+                        if (favoriteItems.Count == 0) {
+                            MessageBox.Show("お気に入りが全て削除されました。");
+                        }
+                    } else {
+                        MessageBox.Show("選択されたアイテムはお気に入りに存在しません。");
+                    }
+                } else {
+                    MessageBox.Show("削除するアイテムを選択してください。");
+                }
+            } else {
+                MessageBox.Show("「お気に入り」カテゴリを選択してください。");
+            }
+        }
     }
 }
