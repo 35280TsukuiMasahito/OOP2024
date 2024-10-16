@@ -22,7 +22,7 @@ namespace DistanceConverter {
 
         //メートルへの変換
         public double ToMeter(double feet) {
-            return feet / Ratio;
+            return feet * Ratio;
         }
     }
 }
