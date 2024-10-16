@@ -50,7 +50,7 @@ namespace DistanceConverter {
         public override bool IsMyUnit(string name) {
             return name.ToLower() == "mile" || name == UnitName;
         }
-        protected override double Ratio { get { return 160; } }
+        protected override double Ratio { get { return 1609.34; } }
         public override string UnitName { get { return "マイル"; } }
     }
 }

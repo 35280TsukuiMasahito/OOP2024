@@ -19,7 +19,9 @@ namespace TextNumberSizeChange {
             _count = 0;
         }
         protected override void Execute(string line) {
-            _count++;
+            string numbs = new string
+                (line.Select(n => conv.ContainsKey(n) ? conv[n]:n).ToArray());
+            Console.WriteLine(numbs);
         }
         protected override void Terminate() {
             Console.WriteLine("{0}",_count);
