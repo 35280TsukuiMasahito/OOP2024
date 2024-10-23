@@ -35,21 +35,21 @@
                     Minimum="0" Maximum="255" Value="0" ValueChanged="Gslider_ValueChanged"/>
             <Slider x:Name="Bslider" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center"
                     Minimum="0" Maximum="255" Value="0" ValueChanged="Bslider_ValueChanged"/>
-            <Label Content="{Binding ElementName=Rslider, Path=Value, StringFormat='R: {0:F0}'}" Grid.Row="0" Grid.Column="2"
-                   VerticalAlignment="Center" HorizontalAlignment="Center"/>
-            <Label Content="{Binding ElementName=Gslider, Path=Value, StringFormat='G: {0:F0}'}" Grid.Row="1" Grid.Column="2" 
-                   VerticalAlignment="Center" HorizontalAlignment="Center"/>
-            <Label Content="{Binding ElementName=Bslider, Path=Value, StringFormat='B: {0:F0}'}" Grid.Row="2" Grid.Column="2" 
-                   VerticalAlignment="Center" HorizontalAlignment="Center"/>
-
+            <TextBox Text="{Binding ElementName=Rslider, Path=Value, StringFormat='R: {0:F0}'}" Grid.Row="0" Grid.Column="2"
+                     VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <TextBox Text="{Binding ElementName=Gslider, Path=Value, StringFormat='G: {0:F0}'}" Grid.Row="1" Grid.Column="2" 
+                     VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <TextBox Text="{Binding ElementName=Bslider, Path=Value, StringFormat='B: {0:F0}'}" Grid.Row="2" Grid.Column="2" 
+                     VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <ComboBox Grid.Row="3" Grid.Column="1" Margin="25"/>
         </Grid>
         <Grid Grid.Column="3">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="4*"/>
             </Grid.RowDefinitions>
-            <Button x:Name="btStock" Grid.Column="3" Grid.Row="0" Content="Stock" FontSize="24" Margin="10" Click="btStock_Click"/>
-            <ListBox x:Name="stockList" Grid.Row="1" Margin="10" SelectionChanged="stockList_SelectionChanged"/>
+            <Button x:Name="btStock" Grid.Column="3" Grid.Row="0" Content="Stock" FontSize="20" Margin="10" Click="btStock_Click"/>
+            <ListBox x:Name="stockList" Grid.Row="1" Margin="10" SelectionChanged="stockList_SelectionChanged" Background="#FFFFDEDE"/>
         </Grid>
     </Grid>
 </Window>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CollorChexker;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -47,8 +48,25 @@ namespace CollorChecker {
             byte g = (byte)Gslider.Value;
             byte b = (byte)Bslider.Value;
 
-            // リストボックスに追加
-            stockList.Items.Add($"R: {r}, G: {g}, B: {b}");
+            // MyColorインスタンスを作成
+            MyColor myColor = new MyColor {
+                Color = Color.FromRgb(r, g, b),
+                Name = $"R: {r}, G: {g}, B: {b}"
+            };
+            // 既に登録されているかチェック
+            if (!IsColorAlreadyRegistered(myColor)) {
+                stockList.Items.Add(myColor);
+            } else {
+                MessageBox.Show("この色はすでに登録されています。", "エラー", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+        }
+
+        private bool IsColorAlreadyRegistered(MyColor color) {
+            // stockListに登録されている色と比較
+            return stockList.Items.OfType<MyColor>().Any(c =>
+                c.Color.R == color.Color.R &&
+                c.Color.G == color.Color.G &&
+                c.Color.B == color.Color.B);
         }
 
         private void stockList_SelectionChanged(object sender, SelectionChangedEventArgs e) {
