@@ -41,7 +41,58 @@
                      VerticalAlignment="Center" HorizontalAlignment="Center"/>
             <TextBox Text="{Binding ElementName=Bslider, Path=Value, StringFormat='B: {0:F0}'}" Grid.Row="2" Grid.Column="2" 
                      VerticalAlignment="Center" HorizontalAlignment="Center"/>
-            <ComboBox Grid.Row="3" Grid.Column="1" Margin="25"/>
+            <ComboBox x:Name="colorComboBox" Grid.Row="3" Grid.Column="1" Margin="20" 
+          SelectionChanged="colorComboBox_SelectionChanged">
+                <ComboBoxItem Tag="255,0,0">
+                    <StackPanel Orientation="Horizontal">
+                        <Rectangle Width="20" Height="20" Fill="Red" Margin="0,0,5,0"/>
+                        <TextBlock Text="Red"/>
+                    </StackPanel>
+                </ComboBoxItem>
+                <ComboBoxItem Tag="0,255,0">
+                    <StackPanel Orientation="Horizontal">
+                        <Rectangle Width="20" Height="20" Fill="Green" Margin="0,0,5,0"/>
+                        <TextBlock Text="Green"/>
+                    </StackPanel>
+                </ComboBoxItem>
+                <ComboBoxItem Tag="0,0,255">
+                    <StackPanel Orientation="Horizontal">
+                        <Rectangle Width="20" Height="20" Fill="Blue" Margin="0,0,5,0"/>
+                        <TextBlock Text="Blue"/>
+                    </StackPanel>
+                </ComboBoxItem>
+                <ComboBoxItem Tag="255,255,0">
+                    <StackPanel Orientation="Horizontal">
+                        <Rectangle Width="20" Height="20" Fill="Yellow" Margin="0,0,5,0"/>
+                        <TextBlock Text="Yellow"/>
+                    </StackPanel>
+                </ComboBoxItem>
+                <ComboBoxItem Tag="0,255,255">
+                    <StackPanel Orientation="Horizontal">
+                        <Rectangle Width="20" Height="20" Fill="Cyan" Margin="0,0,5,0"/>
+                        <TextBlock Text="Cyan"/>
+                    </StackPanel>
+                </ComboBoxItem>
+                <ComboBoxItem Tag="255,0,255">
+                    <StackPanel Orientation="Horizontal">
+                        <Rectangle Width="20" Height="20" Fill="Magenta" Margin="0,0,5,0"/>
+                        <TextBlock Text="Magenta"/>
+                    </StackPanel>
+                </ComboBoxItem>
+                <ComboBoxItem Tag="0,0,0">
+                    <StackPanel Orientation="Horizontal">
+                        <Rectangle Width="20" Height="20" Fill="Black" Margin="0,0,5,0"/>
+                        <TextBlock Text="Black"/>
+                    </StackPanel>
+                </ComboBoxItem>
+                <ComboBoxItem Tag="255,255,255">
+                    <StackPanel Orientation="Horizontal">
+                        <Rectangle Width="20" Height="20" Fill="White" Margin="0,0,5,0"/>
+                        <TextBlock Text="White"/>
+                    </StackPanel>
+                </ComboBoxItem>
+            </ComboBox>
+
         </Grid>
         <Grid Grid.Column="3">
             <Grid.RowDefinitions>
@@ -49,7 +100,8 @@
                 <RowDefinition Height="4*"/>
             </Grid.RowDefinitions>
             <Button x:Name="btStock" Grid.Column="3" Grid.Row="0" Content="Stock" FontSize="20" Margin="10" Click="btStock_Click"/>
-            <ListBox x:Name="stockList" Grid.Row="1" Margin="10" SelectionChanged="stockList_SelectionChanged" Background="#FFFFDEDE"/>
+            <ListBox x:Name="stockList" Grid.Row="1" Margin="10" SelectionChanged="stockList_SelectionChanged"
+                     Background="#FFFFDEDE" FontSize="16" FontFamily="BIZ UDGothic"/>
         </Grid>
     </Grid>
 </Window>

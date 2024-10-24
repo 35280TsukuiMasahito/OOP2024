@@ -10,7 +10,7 @@ namespace CollorChexker {
         public Color Color { get; set; }
         public string Name { get; set; } = string.Empty;
         public override string ToString() {
-            return "R:" + Color.R + "G:" + Color.G + "B:" + Color.B;
+            return !string.IsNullOrEmpty(Name) ? Name : string.Format("R: {0}, G: {1}, B: {2}", Color.R, Color.G, Color.B);
         }
     }
 }

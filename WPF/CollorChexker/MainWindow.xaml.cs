@@ -48,11 +48,33 @@ namespace CollorChecker {
             byte g = (byte)Gslider.Value;
             byte b = (byte)Bslider.Value;
 
+            // コンボボックスから選択された色の名前を取得
+            string colorName = null;
+            if (colorComboBox.SelectedItem is ComboBoxItem selectedItem) {
+                // TagからRGB値を取得
+                if (selectedItem.Tag is string rgbValues) {
+                    string[] values = rgbValues.Split(',');
+                    if (values.Length == 3 &&
+                        int.Parse(values[0]) == r &&
+                        int.Parse(values[1]) == g &&
+                        int.Parse(values[2]) == b) {
+                        // スライダーの値がコンボボックスの選択された色と一致している場合のみ名前を使用
+                        colorName = (selectedItem.Content as StackPanel)?.Children.OfType<TextBlock>().FirstOrDefault()?.Text;
+                    }
+                }
+            }
+
+            // 名前が取得できなかった場合はRGB値を使用
+            if (string.IsNullOrEmpty(colorName)) {
+                colorName = $"R: {r}, G: {g}, B: {b}";
+            }
+
             // MyColorインスタンスを作成
             MyColor myColor = new MyColor {
                 Color = Color.FromRgb(r, g, b),
-                Name = $"R: {r}, G: {g}, B: {b}"
+                Name = colorName
             };
+
             // 既に登録されているかチェック
             if (!IsColorAlreadyRegistered(myColor)) {
                 stockList.Items.Add(myColor);
@@ -70,15 +92,11 @@ namespace CollorChecker {
         }
 
         private void stockList_SelectionChanged(object sender, SelectionChangedEventArgs e) {
-            if (stockList.SelectedItem != null) {
-                // 選択されたアイテムを取得
-                string selectedItem = stockList.SelectedItem.ToString();
-
-                // R, G, Bの値を解析
-                string[] parts = selectedItem.Split(new[] { ", " }, StringSplitOptions.None);
-                byte r = byte.Parse(parts[0].Split(':')[1].Trim());
-                byte g = byte.Parse(parts[1].Split(':')[1].Trim());
-                byte b = byte.Parse(parts[2].Split(':')[1].Trim());
+            if (stockList.SelectedItem is MyColor selectedColor) {
+                // MyColorからRGBの値を取得
+                byte r = selectedColor.Color.R;
+                byte g = selectedColor.Color.G;
+                byte b = selectedColor.Color.B;
 
                 // スライダーを更新
                 Rslider.Value = r;
@@ -89,5 +107,23 @@ namespace CollorChecker {
                 UpdateColor();
             }
         }
+
+        private void colorComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e) {
+            if (colorComboBox.SelectedItem is ComboBoxItem selectedItem) {
+                // TagからRGB値を取得
+                if (selectedItem.Tag is string rgbValues) {
+                    string[] values = rgbValues.Split(',');
+                    if (values.Length == 3) {
+                        // スライダーの値を設定
+                        Rslider.Value = int.Parse(values[0]);
+                        Gslider.Value = int.Parse(values[1]);
+                        Bslider.Value = int.Parse(values[2]);
+
+                        // 色を更新
+                        UpdateColor();
+                    }
+                }
+            }
+        }
     }
-}
+    }
