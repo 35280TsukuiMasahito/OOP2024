@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -21,6 +22,8 @@ namespace CollorChecker {
     public partial class MainWindow : Window {
         public MainWindow() {
             InitializeComponent();
+
+            DataContext = GetColorList();
         }
 
         private void Rslider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e) {
@@ -50,17 +53,10 @@ namespace CollorChecker {
 
             // コンボボックスから選択された色の名前を取得
             string colorName = null;
-            if (colorComboBox.SelectedItem is ComboBoxItem selectedItem) {
-                // TagからRGB値を取得
-                if (selectedItem.Tag is string rgbValues) {
-                    string[] values = rgbValues.Split(',');
-                    if (values.Length == 3 &&
-                        int.Parse(values[0]) == r &&
-                        int.Parse(values[1]) == g &&
-                        int.Parse(values[2]) == b) {
-                        // スライダーの値がコンボボックスの選択された色と一致している場合のみ名前を使用
-                        colorName = (selectedItem.Content as StackPanel)?.Children.OfType<TextBlock>().FirstOrDefault()?.Text;
-                    }
+            if (colorComboBox.SelectedItem is MyColor selectedColor) {
+                // スライダーの値が選択された色と一致している場合、色名を使用
+                if (selectedColor.Color.R == r && selectedColor.Color.G == g && selectedColor.Color.B == b) {
+                    colorName = selectedColor.Name;
                 }
             }
 
@@ -109,21 +105,26 @@ namespace CollorChecker {
         }
 
         private void colorComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e) {
-            if (colorComboBox.SelectedItem is ComboBoxItem selectedItem) {
-                // TagからRGB値を取得
-                if (selectedItem.Tag is string rgbValues) {
-                    string[] values = rgbValues.Split(',');
-                    if (values.Length == 3) {
-                        // スライダーの値を設定
-                        Rslider.Value = int.Parse(values[0]);
-                        Gslider.Value = int.Parse(values[1]);
-                        Bslider.Value = int.Parse(values[2]);
+            if (colorComboBox.SelectedItem is MyColor selectedColor) {
+                // MyColorからRGBの値を取得
+                byte r = selectedColor.Color.R;
+                byte g = selectedColor.Color.G;
+                byte b = selectedColor.Color.B;
 
-                        // 色を更新
-                        UpdateColor();
-                    }
-                }
+                // スライダーの値を設定
+                Rslider.Value = r;
+                Gslider.Value = g;
+                Bslider.Value = b;
+
+                // 色を更新
+                UpdateColor();
             }
         }
+        private MyColor[] GetColorList() {
+            return typeof(Colors).GetProperties(BindingFlags.Public | BindingFlags.Static)
+                .Select(i => new MyColor() { Color = (Color)i.GetValue(null), Name = i.Name }).ToArray();
+        }
+
     }
-    }
+
+}

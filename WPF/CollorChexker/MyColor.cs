@@ -10,7 +10,12 @@ namespace CollorChexker {
         public Color Color { get; set; }
         public string Name { get; set; } = string.Empty;
         public override string ToString() {
-            return !string.IsNullOrEmpty(Name) ? Name : string.Format("R: {0}, G: {1}, B: {2}", Color.R, Color.G, Color.B);
+            // 名前が設定されている場合はその名前を返す
+            if (!string.IsNullOrEmpty(Name)) {
+                return Name;
+            }
+            // 名前が設定されていない場合は RGB 値を文字列として返す
+            return $"R: {Color.R}, G: {Color.G}, B: {Color.B}";
         }
     }
 }

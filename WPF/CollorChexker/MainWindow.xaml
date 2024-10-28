@@ -41,56 +41,20 @@
                      VerticalAlignment="Center" HorizontalAlignment="Center"/>
             <TextBox Text="{Binding ElementName=Bslider, Path=Value, StringFormat='B: {0:F0}'}" Grid.Row="2" Grid.Column="2" 
                      VerticalAlignment="Center" HorizontalAlignment="Center"/>
-            <ComboBox x:Name="colorComboBox" Grid.Row="3" Grid.Column="1" Margin="20" 
+            <ComboBox x:Name="colorComboBox" ItemsSource="{Binding}" SelectedValue="{Binding Color}"  Grid.Row="3" Grid.Column="1" Margin="20" 
           SelectionChanged="colorComboBox_SelectionChanged">
-                <ComboBoxItem Tag="255,0,0">
-                    <StackPanel Orientation="Horizontal">
-                        <Rectangle Width="20" Height="20" Fill="Red" Margin="0,0,5,0"/>
-                        <TextBlock Text="Red"/>
-                    </StackPanel>
-                </ComboBoxItem>
-                <ComboBoxItem Tag="0,255,0">
-                    <StackPanel Orientation="Horizontal">
-                        <Rectangle Width="20" Height="20" Fill="Green" Margin="0,0,5,0"/>
-                        <TextBlock Text="Green"/>
-                    </StackPanel>
-                </ComboBoxItem>
-                <ComboBoxItem Tag="0,0,255">
-                    <StackPanel Orientation="Horizontal">
-                        <Rectangle Width="20" Height="20" Fill="Blue" Margin="0,0,5,0"/>
-                        <TextBlock Text="Blue"/>
-                    </StackPanel>
-                </ComboBoxItem>
-                <ComboBoxItem Tag="255,255,0">
-                    <StackPanel Orientation="Horizontal">
-                        <Rectangle Width="20" Height="20" Fill="Yellow" Margin="0,0,5,0"/>
-                        <TextBlock Text="Yellow"/>
-                    </StackPanel>
-                </ComboBoxItem>
-                <ComboBoxItem Tag="0,255,255">
-                    <StackPanel Orientation="Horizontal">
-                        <Rectangle Width="20" Height="20" Fill="Cyan" Margin="0,0,5,0"/>
-                        <TextBlock Text="Cyan"/>
-                    </StackPanel>
-                </ComboBoxItem>
-                <ComboBoxItem Tag="255,0,255">
-                    <StackPanel Orientation="Horizontal">
-                        <Rectangle Width="20" Height="20" Fill="Magenta" Margin="0,0,5,0"/>
-                        <TextBlock Text="Magenta"/>
-                    </StackPanel>
-                </ComboBoxItem>
-                <ComboBoxItem Tag="0,0,0">
-                    <StackPanel Orientation="Horizontal">
-                        <Rectangle Width="20" Height="20" Fill="Black" Margin="0,0,5,0"/>
-                        <TextBlock Text="Black"/>
-                    </StackPanel>
-                </ComboBoxItem>
-                <ComboBoxItem Tag="255,255,255">
-                    <StackPanel Orientation="Horizontal">
-                        <Rectangle Width="20" Height="20" Fill="White" Margin="0,0,5,0"/>
-                        <TextBlock Text="White"/>
-                    </StackPanel>
-                </ComboBoxItem>
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <Border Width="20" Height="Auto" Margin="5,0" BorderThickness="1" BorderBrush="Black"  >
+                                <Border.Background>
+                                    <SolidColorBrush Color="{Binding Color}"/>
+                                </Border.Background>
+                            </Border>
+                            <TextBlock Text="{Binding Name}"></TextBlock>
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
             </ComboBox>
 
         </Grid>
