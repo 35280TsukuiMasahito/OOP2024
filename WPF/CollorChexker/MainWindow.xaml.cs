@@ -1,29 +1,25 @@
 ﻿using CollorChexker;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+
 
 namespace CollorChecker {
     /// <summary>
     /// MainWindow.xaml の相互作用ロジック
     /// </summary>
     public partial class MainWindow : Window {
+
+        private List<MyColor> colorList;
         public MainWindow() {
             InitializeComponent();
 
-            DataContext = GetColorList();
+            // カラーデータを取得して DataContext に設定
+            colorList = GetColorList().ToList();
+            DataContext = colorList;
         }
 
         private void Rslider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e) {
@@ -51,17 +47,17 @@ namespace CollorChecker {
             byte g = (byte)Gslider.Value;
             byte b = (byte)Bslider.Value;
 
-            // コンボボックスから選択された色の名前を取得
+            // 現在のRGB値に一致する色名を取得
             string colorName = null;
-            if (colorComboBox.SelectedItem is MyColor selectedColor) {
-                // スライダーの値が選択された色と一致している場合、色名を使用
-                if (selectedColor.Color.R == r && selectedColor.Color.G == g && selectedColor.Color.B == b) {
-                    colorName = selectedColor.Name;
-                }
-            }
 
-            // 名前が取得できなかった場合はRGB値を使用
-            if (string.IsNullOrEmpty(colorName)) {
+            // colorListから現在のRGBと一致する色を検索
+            var matchingColor = colorList.FirstOrDefault(c => c.Color.R == r && c.Color.G == g && c.Color.B == b);
+
+            // 一致する色があればその名前を使用
+            if (matchingColor != null) {
+                colorName = matchingColor.Name;
+            } else {
+                // 一致する色がない場合はRGB値を名前として使用
                 colorName = $"R: {r}, G: {g}, B: {b}";
             }
 
@@ -77,6 +73,8 @@ namespace CollorChecker {
             } else {
                 MessageBox.Show("この色はすでに登録されています。", "エラー", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
+
+            ClearComboBoxSelection();
         }
 
         private bool IsColorAlreadyRegistered(MyColor color) {
@@ -104,6 +102,10 @@ namespace CollorChecker {
             }
         }
 
+        private void ClearComboBoxSelection() {
+            colorComboBox.SelectedItem = null;
+        }
+
         private void colorComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e) {
             if (colorComboBox.SelectedItem is MyColor selectedColor) {
                 // MyColorからRGBの値を取得
@@ -125,6 +127,16 @@ namespace CollorChecker {
                 .Select(i => new MyColor() { Color = (Color)i.GetValue(null), Name = i.Name }).ToArray();
         }
 
+        private void btDelete_Click(object sender, RoutedEventArgs e) {
+            // 選択された項目があるか確認
+            if (stockList.SelectedItem is MyColor selectedColor) {
+                // 選択された色をリストから削除
+                stockList.Items.Remove(selectedColor);
+            } else {
+                // 選択されていない場合、エラーメッセージを表示
+                MessageBox.Show("削除する色を選択してください。", "エラー", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+        }
     }
 
 }
