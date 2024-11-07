@@ -22,7 +22,7 @@ namespace TextNumberSizeChange {
         }
 
         public void Terminate() {
-            Console.WriteLine("{0}行",_count)
+            Console.WriteLine("{0}行", _count);
         }
 
         //string _text = "";
@@ -40,5 +40,5 @@ namespace TextNumberSizeChange {
         //    Console.WriteLine("{0}",_count);
         //    Console.WriteLine(_text);
     }
-    }
+    
 }

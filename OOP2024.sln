@@ -165,6 +165,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleSlider", "WPF\SampleS
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CollorChecker", "WPF\CollorChexker\CollorChecker.csproj", "{874F5091-59BC-48F7-9186-13A0CCDCF502}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleUnitConverter", "WPF\SampleUnitConverter\SampleUnitConverter.csproj", "{E430DD62-6FEF-4D84-BC71-36B3DC8B7262}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleWeightUnitConverter", "WPF\SampleWeightUnitConverter\SampleWeightUnitConverter.csproj", "{D9EE64B2-6A68-4143-A22F-5EAD455FF2CC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -379,6 +383,14 @@ Global
 		{874F5091-59BC-48F7-9186-13A0CCDCF502}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{874F5091-59BC-48F7-9186-13A0CCDCF502}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{874F5091-59BC-48F7-9186-13A0CCDCF502}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E430DD62-6FEF-4D84-BC71-36B3DC8B7262}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E430DD62-6FEF-4D84-BC71-36B3DC8B7262}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E430DD62-6FEF-4D84-BC71-36B3DC8B7262}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E430DD62-6FEF-4D84-BC71-36B3DC8B7262}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D9EE64B2-6A68-4143-A22F-5EAD455FF2CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D9EE64B2-6A68-4143-A22F-5EAD455FF2CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D9EE64B2-6A68-4143-A22F-5EAD455FF2CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D9EE64B2-6A68-4143-A22F-5EAD455FF2CC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -448,6 +460,8 @@ Global
 		{45BEF2BF-2C0C-4CBE-83C0-27BB3AA5D266} = {10672A14-17D3-4FF8-8EA4-6087EF19535E}
 		{61491E41-E8F7-4C9C-907B-BCD00128CC8D} = {10672A14-17D3-4FF8-8EA4-6087EF19535E}
 		{874F5091-59BC-48F7-9186-13A0CCDCF502} = {10672A14-17D3-4FF8-8EA4-6087EF19535E}
+		{E430DD62-6FEF-4D84-BC71-36B3DC8B7262} = {10672A14-17D3-4FF8-8EA4-6087EF19535E}
+		{D9EE64B2-6A68-4143-A22F-5EAD455FF2CC} = {10672A14-17D3-4FF8-8EA4-6087EF19535E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C6BDA932-02D0-45AF-9870-D1746C173676}
