@@ -9,6 +9,7 @@ namespace SampleWeightUnitConverter {
         private static List<PoundUnit> units = new List<PoundUnit> {
             new PoundUnit { Name = "oz", Coefficent = 1, },
             new PoundUnit { Name = "lb", Coefficent = 16, },
+            new PoundUnit { Name = "stone", Coefficent = 224, },
         };
         public static ICollection<PoundUnit> Units { get { return units; } }
 

@@ -1,0 +1,44 @@
+﻿<Window x:Class="VisibilityConverter.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:VisibilityConverter"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="250" Width="300">
+    <Window.Resources>
+        <SolidColorBrush x:Key="ButtonBrushKey" Color="#FFE0E2B8"/>
+        <SolidColorBrush x:Key="red" Color="Red"/>
+        <SolidColorBrush x:Key="yellow" Color="Yellow"/>
+        <SolidColorBrush x:Key="green" Color="Green"/>
+    </Window.Resources>
+    <StackPanel>
+        <StackPanel.Resources>
+            <BooleanToVisibilityConverter x:Key="BooleanTovisibilityConvereter"/>
+            <SolidColorBrush x:Key="ButtonBrushKey" Color="Aquamarine" />
+        </StackPanel.Resources>
+
+        <CheckBox x:Name="CheckBox" Content="設定大項目"/>
+        <StackPanel Visibility="{Binding IsChecked,
+                                ElementName=CheckBox,
+                                Converter={StaticResource BooleanTovisibilityConvereter}}"
+                        Margin="20,0,0,0">
+            <RadioButton Content="赤" Checked="RadioButton_Checked_赤"/>
+            <RadioButton Content="黄" Checked="RadioButton_Checked_黄"/>
+            <RadioButton Content="緑" Checked="RadioButton_Checked_緑"/>
+        </StackPanel>
+
+        <Button Margin="10" Content="ボタン1"  x:Name="b1" Background= "{DynamicResource ButtonBrushKey}"/>
+        <Button Margin="10" Content="ボタン2"  x:Name="b2" Background= "{StaticResource ButtonBrushKey}"/>
+        <Button Margin="10" Content="ボタン3" x:Name="b3">
+            <Button.Resources>
+                <SolidColorBrush x:Key="WhiteBrushKey" Color="#FFEAA5A5" />
+            </Button.Resources>
+            <Button.Background>
+                <StaticResource ResourceKey="WhiteBrushKey"/>
+            </Button.Background>
+        </Button>
+
+
+    </StackPanel>
+</Window>
