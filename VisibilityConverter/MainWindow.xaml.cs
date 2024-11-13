@@ -23,15 +23,37 @@ namespace VisibilityConverter {
         }
 
         private void RadioButton_Checked_赤(object sender, RoutedEventArgs e) {
-            b1.Background = (SolidColorBrush)FindResource("red");
+            //b1.Background = (SolidColorBrush)FindResource("red");
+            //b2.Background = (SolidColorBrush)FindResource("red");
         }
 
         private void RadioButton_Checked_黄(object sender, RoutedEventArgs e) {
-            b1.Background = (SolidColorBrush)FindResource("yellow");
+            //b1.Background = (SolidColorBrush)FindResource("yellow");
+            //b2.Background = (SolidColorBrush)FindResource("yellow");
         }
 
         private void RadioButton_Checked_緑(object sender, RoutedEventArgs e) {
-            b1.Background = (SolidColorBrush)FindResource("green");
+            //b1.Background = (SolidColorBrush)FindResource("green");
+            //b2.Background = (SolidColorBrush)FindResource("green");
+        }
+
+        private void RadioButton_Click(object sender, RoutedEventArgs e) {
+            RadioButton selectedRadioButton = (RadioButton)sender;
+            switch (selectedRadioButton.Content) {
+                case "赤":
+                    Resources["ButtonBrushKey"] = new SolidColorBrush(Colors.Red);
+                    break;
+                case "黄":
+                    Resources["ButtonBrushKey"] = new SolidColorBrush(Colors.Yellow);
+                    break;
+                case "緑":
+                    Resources["ButtonBrushKey"] = new SolidColorBrush(Colors.Green);
+                    break;
+            }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e) {
+
         }
 
         //private void Button_Click(object sender, RoutedEventArgs e) {
