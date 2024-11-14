@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CustomerApp"
         mc:Ignorable="d"
-        Title="MainWindow" Height="300" Width="300">
+        Title="MainWindow" Height="400" Width="300">
     <Grid>
         <StackPanel Margin="10">
             <Grid>
@@ -26,7 +26,9 @@
                 <TextBox x:Name="AddressTextBox" Grid.Row="2" Grid.Column="1"/>
             </Grid>
             <Button Content="Save" x:Name="SaveButton" Click="SaveButton_Click" Margin="2"/>
+            <Button Content="Delete" x:Name="DeleteButton" Click="DeleteButton_Click" Margin="2"/>
             <Button Content="Read" x:Name="ReadButton" Click="ReadButton_Click" Margin="2"/>
+            <TextBox x:Name="SearchTextBox" FontSize="20" TextChanged="SearchTextBox_TextChanged"/>
             <ListView x:Name="CustomerListView" Margin="0,5,0,0" Height="300">
                 <ListView.ItemTemplate>
                     <DataTemplate>
