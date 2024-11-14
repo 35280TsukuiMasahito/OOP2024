@@ -57,6 +57,7 @@
                 Content="ボタン2" Background="LightBlue">
         </Button>
         <ComboBox ItemsSource="{x:Static local:ColorViewModel.ColorList}"/>
+        <ComboBox Height="0" Width="6"/>
 
     </StackPanel>
 </Window>
