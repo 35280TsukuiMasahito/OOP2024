@@ -27,7 +27,15 @@ namespace CustomerApp {
         }
 
         private void SaveButton_Click(object sender, RoutedEventArgs e) {
+            if (string.IsNullOrWhiteSpace(NameTextBox.Text) ||
+                string.IsNullOrWhiteSpace(PhoneTextBox.Text) ||
+                string.IsNullOrWhiteSpace(AddressTextBox.Text)) {
+                MessageBox.Show("すべてのフィールドを入力してください。", "入力エラー", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
             var customer = new Customer() {
+
                 Name = NameTextBox.Text,
                 Phone = PhoneTextBox.Text,
                 Address = AddressTextBox.Text,
