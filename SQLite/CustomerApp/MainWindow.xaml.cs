@@ -1,4 +1,5 @@
 ﻿using CustomerApp.Objects;
+using Microsoft.Win32;
 using SQLite;
 using System;
 using System.Collections.Generic;
@@ -21,6 +22,8 @@ namespace CustomerApp {
     /// </summary>
     public partial class MainWindow : Window {
         List<Customer> _customers;
+        private string _selectedImagePath;
+
         public MainWindow() {
             InitializeComponent();
             ReadDatabase();
@@ -39,6 +42,7 @@ namespace CustomerApp {
                 Name = NameTextBox.Text,
                 Phone = PhoneTextBox.Text,
                 Address = AddressTextBox.Text,
+                ImagePath = _selectedImagePath,
             };
 
             using (var connection = new SQLiteConnection(App.databasePass)) {
@@ -111,6 +115,18 @@ namespace CustomerApp {
                 NameTextBox.Text = selectedCustomer.Name;
                 PhoneTextBox.Text = selectedCustomer.Phone;
                 AddressTextBox.Text = selectedCustomer.Address;
+            }
+        }
+
+        private void SelectImageButton_Click(object sender, RoutedEventArgs e) {
+            // OpenFileDialogを使って画像ファイルを選択
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "Image Files|*.jpg;*.jpeg;*.png;*.gif"; // 画像のファイル拡張子を制限
+            if (openFileDialog.ShowDialog() == true) {
+                _selectedImagePath = openFileDialog.FileName;  // 選択した画像のパスを保存
+
+                // 画像プレビューを表示
+                CustomerImage.Source = new System.Windows.Media.Imaging.BitmapImage(new Uri(_selectedImagePath));
             }
         }
     }
