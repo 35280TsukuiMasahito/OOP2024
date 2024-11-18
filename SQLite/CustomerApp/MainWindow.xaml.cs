@@ -93,5 +93,17 @@ namespace CustomerApp {
             }
             ReadDatabase();
         }
+
+        private void CustomerListView_SelectionChanged(object sender, SelectionChangedEventArgs e) {
+            // ListView から選択されたアイテムを取得
+            var selectedCustomer = CustomerListView.SelectedItem as Customer;
+
+            // 選択された顧客が存在すれば、その情報をテキストボックスに反映
+            if (selectedCustomer != null) {
+                NameTextBox.Text = selectedCustomer.Name;
+                PhoneTextBox.Text = selectedCustomer.Phone;
+                AddressTextBox.Text = selectedCustomer.Address;
+            }
+        }
     }
 }
