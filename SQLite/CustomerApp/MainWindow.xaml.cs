@@ -55,13 +55,13 @@ namespace CustomerApp {
         }
 
         private void SearchTextBox_TextChanged(object sender, TextChangedEventArgs e) {
-            var filterList = _customers.Where(x=>x.Name.Contains(SearchTextBox.Text)).ToList();
+            var filterList = _customers.Where(x => x.Name.Contains(SearchTextBox.Text)).ToList();
             CustomerListView.ItemsSource = filterList;
         }
 
         private void DeleteButton_Click(object sender, RoutedEventArgs e) {
             var item = CustomerListView.SelectedItem as Customer;
-            if(item == null) {
+            if (item == null) {
                 MessageBox.Show("削除する行を選択してください");
                 return;
             }
@@ -73,6 +73,25 @@ namespace CustomerApp {
                 CustomerListView.ItemsSource = _customers;
 
             }
+            ReadDatabase();
+        }
+
+        private void UpdateButton_Click(object sender, RoutedEventArgs e) {
+            var selectedCustomer = CustomerListView.SelectedItem as Customer;
+            if (selectedCustomer == null) {
+                MessageBox.Show("更新する行を選択してください");
+                return;
+            }
+            selectedCustomer.Name = NameTextBox.Text;
+            selectedCustomer.Phone = PhoneTextBox.Text;
+            selectedCustomer.Address = AddressTextBox.Text;
+
+            // データベースで顧客情報を更新
+            using (var connection = new SQLiteConnection(App.databasePass)) {
+                connection.CreateTable<Customer>();
+                connection.Update(selectedCustomer); // プライマリキーを使ってレコードを更新
+            }
+            ReadDatabase();
         }
     }
 }
