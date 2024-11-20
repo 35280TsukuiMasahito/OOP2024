@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CustomerApp"
         mc:Ignorable="d"
-        Title="MainWindow" Height="500" Width="300">
+        Title="MainWindow" Height="500" Width="400">
     <Grid>
         <StackPanel Margin="10">
             <Grid>
@@ -20,34 +20,47 @@
                     <ColumnDefinition Width="8*"/>
                 </Grid.ColumnDefinitions>
                 <TextBlock Text="名前" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center"/>
-                <TextBox x:Name="NameTextBox" Grid.Row="0" Grid.Column="1"/>
+                <TextBox x:Name="NameTextBox" Grid.Row="0" Grid.Column="1" BorderBrush="Black" Background="AliceBlue" Margin="2"/>
                 <TextBlock Text="電話番号" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center"/>
-                <TextBox x:Name="PhoneTextBox" Grid.Row="1" Grid.Column="1"/>
+                <TextBox x:Name="PhoneTextBox" Grid.Row="1" Grid.Column="1" BorderBrush="Black" Background="AliceBlue" Margin="2"/>
                 <TextBlock Text="住所" Grid.Row="2" Grid.Column="0" VerticalAlignment="Center"/>
-                <TextBox x:Name="AddressTextBox" Grid.Row="2" Grid.Column="1"/>
+                <TextBox x:Name="AddressTextBox" Grid.Row="2" Grid.Column="1" BorderBrush="Black" Background="AliceBlue" Margin="2"/>
                 <TextBlock Text="画像" Grid.Row="3" Grid.Column="0" VerticalAlignment="Center"/>
-                <Button Content="画像を選択" x:Name="SelectImageButton" Grid.Row="3" Grid.Column="1" Click="SelectImageButton_Click" Margin="2"/>
+                <StackPanel Grid.Row="3" Grid.Column="1" Orientation="Horizontal">
+                    <Button Content="画像を選択" x:Name="SelectImageButton" Click="SelectImageButton_Click" Margin="2" Width="90"/>
+                    <Button Content="取消" x:Name="SelectAllButton" Click="SelectAllButton_Click" Margin="2" Width="50"/>
+                    <Button Content="画像削除" x:Name="RemoveImageButton" Click="RemoveImageButton_Click" Margin="2" Width="60"/>
+                </StackPanel>
             </Grid>
-            <Image x:Name="CustomerImage" Width="100" Height="100" Margin="10" HorizontalAlignment="Center"/>
+            <Border Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" BorderBrush="Black" BorderThickness="2" CornerRadius="5" Margin="10" Background="AliceBlue">
+                <Image x:Name="CustomerImage" Width="100" Height="100" Margin="10" HorizontalAlignment="Center"/>
+                </Border>
             <Button Content="Save" x:Name="SaveButton" Click="SaveButton_Click" Margin="2"/>
             <Button Content="Delete" x:Name="DeleteButton" Click="DeleteButton_Click" Margin="2"/>
-            <Button Content="UpdateButton" x:Name="UpdateButton" Click="UpdateButton_Click" Margin="2"/>
-            <TextBox x:Name="SearchTextBox" FontSize="20" TextChanged="SearchTextBox_TextChanged"/>
-            <ListView x:Name="CustomerListView" Margin="0,5,0,0" Height="300" SelectionChanged="CustomerListView_SelectionChanged">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <StackPanel Orientation="Horizontal">
-                            <StackPanel>
-                                <TextBlock Text="{Binding Id}"/>
-                                <TextBlock Text="{Binding Name}" FontSize="20"/>
-                                <TextBlock Text="{Binding Phone}" Foreground="Blue"/>
-                                <TextBlock Text="{Binding Address}" Foreground="Green"/>
-                            </StackPanel>
-                            <Image Width="50" Height="50" Source="{Binding ImagePath}" Margin="10"/>
-                        </StackPanel>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
+            <Button Content="Update" x:Name="UpdateButton" Click="UpdateButton_Click" Margin="2"/>
+            <TextBox x:Name="SearchTextBox" FontSize="20" TextChanged="SearchTextBox_TextChanged" 
+                     BorderBrush="Black" Background="AliceBlue" Margin="2"/>
+
+            <Border BorderBrush="Gray" BorderThickness="2" CornerRadius="5">
+                <ListView x:Name="CustomerListView" Margin="0,5,0,0" Height="300" SelectionChanged="CustomerListView_SelectionChanged">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="ID" DisplayMemberBinding="{Binding Id}" Width="20"/>
+                            <GridViewColumn Header="名前" DisplayMemberBinding="{Binding Name}" Width="80"/>
+                            <GridViewColumn Header="電話番号" DisplayMemberBinding="{Binding Phone}" Width="90"/>
+                            <GridViewColumn Header="住所" DisplayMemberBinding="{Binding Address}" Width="100"/>
+                            <GridViewColumn Header="画像" Width="70">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Image Width="50" Height="50" Source="{Binding ImagePath}" />
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </Border>
+
         </StackPanel>
     </Grid>
 </Window>

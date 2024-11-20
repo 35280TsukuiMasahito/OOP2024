@@ -29,6 +29,19 @@ namespace CustomerApp {
             ReadDatabase();
         }
 
+        private void ClearFields() {
+            // 入力フィールドをクリア
+            NameTextBox.Text = string.Empty;
+            PhoneTextBox.Text = string.Empty;
+            AddressTextBox.Text = string.Empty;
+
+            // 画像プレビューをクリア
+            CustomerImage.Source = null;
+
+            // 画像パスのリセット
+            _selectedImagePath = null;
+        }
+
         private void SaveButton_Click(object sender, RoutedEventArgs e) {
             if (string.IsNullOrWhiteSpace(NameTextBox.Text) ||
                 string.IsNullOrWhiteSpace(PhoneTextBox.Text) ||
@@ -50,11 +63,9 @@ namespace CustomerApp {
                 connection.Insert(customer);
             }
             ReadDatabase();
+            ClearFields();
         }
 
-        private void ReadButton_Click(object sender, RoutedEventArgs e) {
-
-        }
 
         private void ReadDatabase() {
             using (var connection = new SQLiteConnection(App.databasePass)) {
@@ -97,6 +108,7 @@ namespace CustomerApp {
             selectedCustomer.Name = NameTextBox.Text;
             selectedCustomer.Phone = PhoneTextBox.Text;
             selectedCustomer.Address = AddressTextBox.Text;
+            selectedCustomer.ImagePath = _selectedImagePath;
 
             // データベースで顧客情報を更新
             using (var connection = new SQLiteConnection(App.databasePass)) {
@@ -104,6 +116,7 @@ namespace CustomerApp {
                 connection.Update(selectedCustomer); // プライマリキーを使ってレコードを更新
             }
             ReadDatabase();
+            ClearFields();
         }
 
         private void CustomerListView_SelectionChanged(object sender, SelectionChangedEventArgs e) {
@@ -115,6 +128,16 @@ namespace CustomerApp {
                 NameTextBox.Text = selectedCustomer.Name;
                 PhoneTextBox.Text = selectedCustomer.Phone;
                 AddressTextBox.Text = selectedCustomer.Address;
+
+                if (!string.IsNullOrEmpty(selectedCustomer.ImagePath)) {
+                    CustomerImage.Source = new BitmapImage(new Uri(selectedCustomer.ImagePath));
+                } else {
+                    // 画像がない場合はプレビューをクリア
+                    CustomerImage.Source = null;
+                }
+
+                // 画像パスを更新（必要に応じて使用）
+                _selectedImagePath = selectedCustomer.ImagePath;
             }
         }
 
@@ -128,6 +151,44 @@ namespace CustomerApp {
                 // 画像プレビューを表示
                 CustomerImage.Source = new System.Windows.Media.Imaging.BitmapImage(new Uri(_selectedImagePath));
             }
+        }
+
+        private void RemoveImageButton_Click(object sender, RoutedEventArgs e) {
+            // ListViewで選択された顧客を取得
+            var selectedCustomer = CustomerListView.SelectedItem as Customer;
+
+            if (selectedCustomer == null) {
+                MessageBox.Show("画像を取り消す顧客を選択してください");
+                return;
+            }
+
+            // 画像パスを削除し、データベースを更新
+            selectedCustomer.ImagePath = null;
+            using (var connection = new SQLiteConnection(App.databasePass)) {
+                connection.CreateTable<Customer>();
+                connection.Update(selectedCustomer); // プライマリキーを使って更新
+            }
+
+            // UIの更新
+            CustomerImage.Source = null; // プレビューをクリア
+            MessageBox.Show("画像情報を取り消しました。", "成功", MessageBoxButton.OK, MessageBoxImage.Information);
+
+            ReadDatabase(); // リストビューをリロード
+        }
+
+        private void SelectAllButton_Click(object sender, RoutedEventArgs e) {
+            // テキストボックスをクリア
+            NameTextBox.Text = string.Empty;
+            PhoneTextBox.Text = string.Empty;
+            AddressTextBox.Text = string.Empty;
+
+            // 画像プレビューをクリア
+            CustomerImage.Source = null;
+
+            // 画像パスのリセット
+            _selectedImagePath = null;
+
+            MessageBox.Show("すべての入力フィールドをクリアしました。", "クリア", MessageBoxButton.OK, MessageBoxImage.Information);
         }
     }
 }
