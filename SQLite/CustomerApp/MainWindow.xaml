@@ -32,22 +32,41 @@
                     <Button Content="画像削除" x:Name="RemoveImageButton" Click="RemoveImageButton_Click" Margin="2" Width="60"/>
                 </StackPanel>
             </Grid>
+
             <Border Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" BorderBrush="Black" BorderThickness="2" CornerRadius="5" Margin="10" Background="AliceBlue">
                 <Image x:Name="CustomerImage" Width="100" Height="100" Margin="10" HorizontalAlignment="Center"/>
-                </Border>
-            <Button Content="Save" x:Name="SaveButton" Click="SaveButton_Click" Margin="2"/>
+            </Border>
+            <Button Content="Regist" x:Name="SaveButton" Click="SaveButton_Click" Margin="2"/>
             <Button Content="Delete" x:Name="DeleteButton" Click="DeleteButton_Click" Margin="2"/>
             <Button Content="Update" x:Name="UpdateButton" Click="UpdateButton_Click" Margin="2"/>
-            <TextBox x:Name="SearchTextBox" FontSize="20" TextChanged="SearchTextBox_TextChanged" 
-                     BorderBrush="Black" Background="AliceBlue" Margin="2"/>
+            
+            <StackPanel Orientation="Horizontal">
+                <TextBlock x:Name="Search" Text="検索" VerticalAlignment="Center" FontSize="20"/>
+                <TextBox x:Name="SearchTextBox" FontSize="20" TextChanged="SearchTextBox_TextChanged" 
+                     BorderBrush="Black" Background="AliceBlue" Margin="2" Width="300"/>
+            </StackPanel>
 
-            <Border BorderBrush="Gray" BorderThickness="2" CornerRadius="5">
-                <ListView x:Name="CustomerListView" Margin="0,5,0,0" Height="300" SelectionChanged="CustomerListView_SelectionChanged">
+            <Border BorderBrush="Gray" BorderThickness="2" CornerRadius="5" Margin="0,5,0,0">
+                <ListView x:Name="CustomerListView" Margin="0,5,0,0" Height="300" 
+                          SelectionChanged="CustomerListView_SelectionChanged" 
+                          AlternationCount="2">
+                    <ListView.Resources>
+                        <Style TargetType="ListViewItem">
+                            <Style.Triggers>
+                                <Trigger Property="ItemsControl.AlternationIndex" Value="0">
+                                    <Setter Property="Background" Value="#F0F8FF"/>
+                                </Trigger>
+                                <Trigger Property="ItemsControl.AlternationIndex" Value="1">
+                                    <Setter Property="Background" Value="#FAEBD7"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </ListView.Resources>
+
                     <ListView.View>
                         <GridView>
-                            <GridViewColumn Header="ID" DisplayMemberBinding="{Binding Id}" Width="20"/>
-                            <GridViewColumn Header="名前" DisplayMemberBinding="{Binding Name}" Width="80"/>
-                            <GridViewColumn Header="電話番号" DisplayMemberBinding="{Binding Phone}" Width="90"/>
+                            <GridViewColumn Header="名前" DisplayMemberBinding="{Binding Name}" Width="90"/>
+                            <GridViewColumn Header="電話番号" DisplayMemberBinding="{Binding Phone}" Width="100"/>
                             <GridViewColumn Header="住所" DisplayMemberBinding="{Binding Address}" Width="100"/>
                             <GridViewColumn Header="画像" Width="70">
                                 <GridViewColumn.CellTemplate>
