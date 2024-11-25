@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CustomerApp"
         mc:Ignorable="d"
-        Title="MainWindow" Height="500" Width="400">
+        Title="MainWindow" Height="700" Width="410">
     <Grid>
         <StackPanel Margin="10">
             <Grid>
@@ -28,18 +28,58 @@
                 <TextBlock Text="画像" Grid.Row="3" Grid.Column="0" VerticalAlignment="Center"/>
                 <StackPanel Grid.Row="3" Grid.Column="1" Orientation="Horizontal">
                     <Button Content="画像を選択" x:Name="SelectImageButton" Click="SelectImageButton_Click" Margin="2" Width="90"/>
-                    <Button Content="取消" x:Name="SelectAllButton" Click="SelectAllButton_Click" Margin="2" Width="50"/>
-                    <Button Content="画像削除" x:Name="RemoveImageButton" Click="RemoveImageButton_Click" Margin="2" Width="60"/>
+                    <Button Content="取消" x:Name="SelectAllButton" Click="SelectAllButton_Click" Margin="2" Width="50">
+                        <Button.Triggers>
+                            <EventTrigger RoutedEvent="Button.Click">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetProperty="Opacity" From="1" To="0.5" Duration="0:0:0.2" AutoReverse="True"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                        </Button.Triggers>
+                    </Button>
+                    <Button Content="画像削除" x:Name="RemoveImageButton" Click="RemoveImageButton_Click" Margin="2" Width="60">
+                        <Button.Triggers>
+                            <EventTrigger RoutedEvent="Button.Click">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetProperty="Opacity" From="1" To="0.5" Duration="0:0:0.2" AutoReverse="True"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                        </Button.Triggers>
+                    </Button>
                 </StackPanel>
             </Grid>
 
             <Border Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" BorderBrush="Black" BorderThickness="2" CornerRadius="5" Margin="10" Background="AliceBlue">
                 <Image x:Name="CustomerImage" Width="100" Height="100" Margin="10" HorizontalAlignment="Center"/>
             </Border>
-            <Button Content="Regist" x:Name="SaveButton" Click="SaveButton_Click" Margin="2"/>
-            <Button Content="Delete" x:Name="DeleteButton" Click="DeleteButton_Click" Margin="2"/>
-            <Button Content="Update" x:Name="UpdateButton" Click="UpdateButton_Click" Margin="2"/>
-            
+            <Button Content="Regist" x:Name="SaveButton" Click="SaveButton_Click" Margin="2">
+                <Button.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                        <GradientStop Color="LightBlue" Offset="0.0"/>
+                        <GradientStop Color="DeepSkyBlue" Offset="1.0"/>
+                    </LinearGradientBrush>
+                </Button.Background>
+            </Button>
+            <Button Content="Delete" x:Name="DeleteButton" Click="DeleteButton_Click" Margin="2">
+                <Button.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                        <GradientStop Color="#FFEC98AB" Offset="0.0"/>
+                        <GradientStop Color="Red" Offset="1.0"/>
+                    </LinearGradientBrush>
+                </Button.Background>
+            </Button>
+            <Button Content="Update" x:Name="UpdateButton" Click="UpdateButton_Click" Margin="2">
+                <Button.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                        <GradientStop Color="#FFD5F7C9" Offset="0.0"/>
+                        <GradientStop Color="#FF08F758" Offset="1.0"/>
+                    </LinearGradientBrush>
+                </Button.Background>
+            </Button>
             <StackPanel Orientation="Horizontal">
                 <TextBlock x:Name="Search" Text="検索" VerticalAlignment="Center" FontSize="20"/>
                 <TextBox x:Name="SearchTextBox" FontSize="20" TextChanged="SearchTextBox_TextChanged" 
@@ -71,7 +111,7 @@
                             <GridViewColumn Header="画像" Width="70">
                                 <GridViewColumn.CellTemplate>
                                     <DataTemplate>
-                                        <Image Width="50" Height="50" Source="{Binding ImagePath}" />
+                                        <Image Width="50" Height="50" Source="{Binding ImageData,Converter={StaticResource ByteToImageConverter}}"/>
                                     </DataTemplate>
                                 </GridViewColumn.CellTemplate>
                             </GridViewColumn>

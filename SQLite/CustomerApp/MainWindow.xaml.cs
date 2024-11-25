@@ -52,11 +52,10 @@ namespace CustomerApp {
             }
 
             var customer = new Customer() {
-
                 Name = NameTextBox.Text,
                 Phone = PhoneTextBox.Text,
                 Address = AddressTextBox.Text,
-                ImagePath = _selectedImagePath,
+                ImageData = CustomerImage.Source != null ? ImageHelper.ImageToByteArray(_selectedImagePath) : null
             };
 
             using (var connection = new SQLiteConnection(App.databasePass)) {
@@ -114,7 +113,7 @@ namespace CustomerApp {
 
             // 画像パスを更新
             if (!string.IsNullOrEmpty(_selectedImagePath)) {
-                selectedCustomer.ImagePath = _selectedImagePath;
+                selectedCustomer.ImageData = CustomerImage.Source != null ? ImageHelper.ImageToByteArray(_selectedImagePath) : null;
             }
 
             // データベースを更新
@@ -139,37 +138,33 @@ namespace CustomerApp {
                 AddressTextBox.Text = selectedCustomer.Address;
 
                 // 画像プレビュー
-                if (!string.IsNullOrEmpty(selectedCustomer.ImagePath)) {
-                    CustomerImage.Source = new BitmapImage(new Uri(selectedCustomer.ImagePath));
-                } else {
-                    CustomerImage.Source = null;
-                }
+                CustomerImage.Source = ImageHelper.ByteArrayToImage(selectedCustomer.ImageData);
             }
         }
 
         private void SelectImageButton_Click(object sender, RoutedEventArgs e) {
-            // OpenFileDialogを使って画像ファイルを選択
             OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Filter = "Image Files|*.jpg;*.jpeg;*.png;*.gif"; // 画像のファイル拡張子を制限
-            if (openFileDialog.ShowDialog() == true) {
-                _selectedImagePath = openFileDialog.FileName;  // 選択した画像のパスを保存
+            openFileDialog.Filter = "Image Files|*.jpg;*.jpeg;*.png;*.gif";
 
-                // 画像プレビューを表示
-                CustomerImage.Source = new System.Windows.Media.Imaging.BitmapImage(new Uri(_selectedImagePath));
+            if (openFileDialog.ShowDialog() == true) {
+                _selectedImagePath = openFileDialog.FileName;
+
+                // 画像をバイト配列に変換してプレビュー表示
+                var imageBytes = ImageHelper.ImageToByteArray(_selectedImagePath);
+                CustomerImage.Source = ImageHelper.ByteArrayToImage(imageBytes);
             }
         }
 
         private void RemoveImageButton_Click(object sender, RoutedEventArgs e) {
-            // ListViewで選択された顧客を取得
             var selectedCustomer = CustomerListView.SelectedItem as Customer;
 
             if (selectedCustomer == null) {
-                MessageBox.Show("画像を取り消す顧客を選択してください");
+                MessageBox.Show("画像を削除する顧客を選択してください");
                 return;
             }
 
-            // 画像パスを削除（UIとオブジェクトに反映）
-            selectedCustomer.ImagePath = null;
+            // 画像データをクリア
+            selectedCustomer.ImageData = null;
             CustomerImage.Source = null; // プレビューをクリア
         }
 
@@ -186,6 +181,25 @@ namespace CustomerApp {
             _selectedImagePath = null;
 
             MessageBox.Show("すべての入力フィールドをクリアしました。", "クリア", MessageBoxButton.OK, MessageBoxImage.Information);
+        }
+
+        public static class ImageHelper {
+            public static byte[] ImageToByteArray(string imagePath) {
+                return System.IO.File.ReadAllBytes(imagePath);
+            }
+
+            public static BitmapImage ByteArrayToImage(byte[] byteArray) {
+                if (byteArray == null || byteArray.Length == 0) return null;
+
+                var bitmapImage = new BitmapImage();
+                using (var stream = new System.IO.MemoryStream(byteArray)) {
+                    bitmapImage.BeginInit();
+                    bitmapImage.CacheOption = BitmapCacheOption.OnLoad;
+                    bitmapImage.StreamSource = stream;
+                    bitmapImage.EndInit();
+                }
+                return bitmapImage;
+            }
         }
     }
 }

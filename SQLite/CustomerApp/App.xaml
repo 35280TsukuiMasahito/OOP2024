@@ -4,6 +4,6 @@
              xmlns:local="clr-namespace:CustomerApp"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <local:BytetoImageConverter x:Key="ByteToImageConverter"/>
     </Application.Resources>
 </Application>
