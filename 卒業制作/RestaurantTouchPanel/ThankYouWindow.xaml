@@ -1,0 +1,14 @@
+﻿<Window x:Class="RestaurantTouchPanel.ThankYouWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="ご注文ありがとうございます" Height="600" Width="800" 
+        WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="Images/wafu.jpg" Stretch="UniformToFill" />
+        </Grid.Background>
+        <TextBlock Text="ご注文ありがとうございます！" 
+                   HorizontalAlignment="Center" VerticalAlignment="Center" 
+                   FontSize="50" FontWeight="Bold" Foreground="White" Background="Black" />
+    </Grid>
+</Window>
