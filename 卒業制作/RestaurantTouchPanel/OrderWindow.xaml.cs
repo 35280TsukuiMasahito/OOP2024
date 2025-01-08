@@ -11,10 +11,20 @@ namespace RestaurantTouchPanel {
             // カテゴリボタンがクリックされた場合の処理
             // 料理ボタンがクリックされた場合
             if ((sender as Button)?.Content.ToString() == "料理") {
-                // MenuSelectionWindowを開く
                 var menuWindow = new MenuSelectionWindow();
                 this.Close();
                 menuWindow.ShowDialog(); // モーダルで開く
+            } else if ((sender as Button)?.Content.ToString() == "おすすめ・鍋") {
+                var menuWindow = new OsusumeWindow();
+                this.Close();
+                menuWindow.ShowDialog();
+            } else if ((sender as Button)?.Content.ToString() == "刺身・寿司・サラダ") {
+            } else if ((sender as Button)?.Content.ToString() == "アルコール①") {
+            } else if ((sender as Button)?.Content.ToString() == "アルコール②") {
+            } else if ((sender as Button)?.Content.ToString() == "ノンアル・ソフドリ") {
+            } else if ((sender as Button)?.Content.ToString() == "デザート") {
+            } else if ((sender as Button)?.Content.ToString() == "サービス") {
+            } else if ((sender as Button)?.Content.ToString() == "特選メニュー") {
             } else {
                 MessageBox.Show($"{(sender as Button)?.Content}がクリックされました。");
             }

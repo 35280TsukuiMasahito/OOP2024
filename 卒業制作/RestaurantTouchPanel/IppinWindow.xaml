@@ -1,4 +1,4 @@
-﻿<Window x:Class="RestaurantTouchPanel.MenuSelectionWindow"
+﻿<Window x:Class="RestaurantTouchPanel.IppinWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="メニュー選択画面" Height="600" Width="800">
@@ -93,43 +93,43 @@
             <!-- 商品アイテム -->
             <Button Style="{StaticResource MenuItemStyle}" Click="MenuItem_Click" Tag="1">
                 <StackPanel>
-                    <Image Source="Images/agemono/karage.jpg" Width="120" Height="120" />
-                    <TextBlock Text="若鳥の唐揚げ" FontSize="16" HorizontalAlignment="Center" />
-                    <TextBlock Text="¥500" FontSize="14" HorizontalAlignment="Center" />
+                    <Image Source="Images/ippin/yamateppan.jpg" Width="120" Height="120" />
+                    <TextBlock Text="山芋の鉄板焼き" FontSize="16" HorizontalAlignment="Center" />
+                    <TextBlock Text="¥400" FontSize="14" HorizontalAlignment="Center" />
                 </StackPanel>
             </Button>
             <Button Style="{StaticResource MenuItemStyle}" Click="MenuItem_Click" Tag="2">
                 <StackPanel>
-                    <Image Source="Images/agemono/nankara.jpg" Width="120" Height="120" />
-                    <TextBlock Text="軟骨の唐揚げ" FontSize="16" HorizontalAlignment="Center" />
-                    <TextBlock Text="¥500" FontSize="14" HorizontalAlignment="Center" />
+                    <Image Source="Images/ippin/azitama.jpg" Width="120" Height="120" />
+                    <TextBlock Text="味付き卵" FontSize="16" HorizontalAlignment="Center" />
+                    <TextBlock Text="¥320" FontSize="14" HorizontalAlignment="Center" />
                 </StackPanel>
             </Button>
             <Button Style="{StaticResource MenuItemStyle}" Click="MenuItem_Click" Tag="3">
                 <StackPanel>
-                    <Image Source="Images/agemono/potato.jpg" Width="120" Height="120" />
-                    <TextBlock Text="ポテトフライ" FontSize="16" HorizontalAlignment="Center" />
+                    <Image Source="Images/ippin/ramen.jpg" Width="120" Height="120" />
+                    <TextBlock Text="醤油ラーメン" FontSize="16" HorizontalAlignment="Center" />
                     <TextBlock Text="¥400" FontSize="14" HorizontalAlignment="Center" />
                 </StackPanel>
             </Button>
             <Button Style="{StaticResource MenuItemStyle}" Click="MenuItem_Click" Tag="4">
                 <StackPanel>
-                    <Image Source="Images/agemono/kaman.jpg" Width="120" Height="120" />
-                    <TextBlock Text="カマンベールポテト" FontSize="16" HorizontalAlignment="Center" />
-                    <TextBlock Text="¥400" FontSize="14" HorizontalAlignment="Center" />
+                    <Image Source="Images/ippin/torikatu.jpg" Width="120" Height="120" />
+                    <TextBlock Text="鳥カツ" FontSize="16" HorizontalAlignment="Center" />
+                    <TextBlock Text="¥480" FontSize="14" HorizontalAlignment="Center" />
                 </StackPanel>
             </Button>
             <Button Style="{StaticResource MenuItemStyle}" Click="MenuItem_Click" Tag="5">
                 <StackPanel>
-                    <Image Source="Images/agemono/yamaiso.jpg" Width="120" Height="120" />
-                    <TextBlock Text="山芋の磯部揚げ" FontSize="16" HorizontalAlignment="Center" />
-                    <TextBlock Text="¥400" FontSize="14" HorizontalAlignment="Center" />
+                    <Image Source="Images/ippin/nannbann.jpg" Width="120" Height="120" />
+                    <TextBlock Text="チキン南蛮" FontSize="16" HorizontalAlignment="Center" />
+                    <TextBlock Text="¥520" FontSize="14" HorizontalAlignment="Center" />
                 </StackPanel>
             </Button>
             <Button Style="{StaticResource MenuItemStyle}" Click="MenuItem_Click" Tag="6">
                 <StackPanel>
-                    <Image Source="Images/agemono/teba.jpg" Width="120" Height="120" />
-                    <TextBlock Text="手羽先の唐揚げ" FontSize="16" HorizontalAlignment="Center" />
+                    <Image Source="Images/ippin/toriten.jpg" Width="120" Height="120" />
+                    <TextBlock Text="鶏天" FontSize="16" HorizontalAlignment="Center" />
                     <TextBlock Text="¥500" FontSize="14" HorizontalAlignment="Center" />
                 </StackPanel>
             </Button>

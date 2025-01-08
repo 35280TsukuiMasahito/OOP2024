@@ -1,4 +1,4 @@
-﻿<Window x:Class="RestaurantTouchPanel.MenuSelectionWindow"
+﻿<Window x:Class="RestaurantTouchPanel.YakitoriWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="メニュー選択画面" Height="600" Width="800">
@@ -93,44 +93,44 @@
             <!-- 商品アイテム -->
             <Button Style="{StaticResource MenuItemStyle}" Click="MenuItem_Click" Tag="1">
                 <StackPanel>
-                    <Image Source="Images/agemono/karage.jpg" Width="120" Height="120" />
-                    <TextBlock Text="若鳥の唐揚げ" FontSize="16" HorizontalAlignment="Center" />
-                    <TextBlock Text="¥500" FontSize="14" HorizontalAlignment="Center" />
+                    <Image Source="Images/yakitori/momotare.jpg" Width="120" Height="120" />
+                    <TextBlock Text="もも" FontSize="16" HorizontalAlignment="Center" />
+                    <TextBlock Text="¥320" FontSize="14" HorizontalAlignment="Center" />
                 </StackPanel>
             </Button>
             <Button Style="{StaticResource MenuItemStyle}" Click="MenuItem_Click" Tag="2">
                 <StackPanel>
-                    <Image Source="Images/agemono/nankara.jpg" Width="120" Height="120" />
-                    <TextBlock Text="軟骨の唐揚げ" FontSize="16" HorizontalAlignment="Center" />
-                    <TextBlock Text="¥500" FontSize="14" HorizontalAlignment="Center" />
+                    <Image Source="Images/yakitori/kawatare.jpg" Width="120" Height="120" />
+                    <TextBlock Text="とり皮" FontSize="16" HorizontalAlignment="Center" />
+                    <TextBlock Text="¥320" FontSize="14" HorizontalAlignment="Center" />
                 </StackPanel>
             </Button>
             <Button Style="{StaticResource MenuItemStyle}" Click="MenuItem_Click" Tag="3">
                 <StackPanel>
-                    <Image Source="Images/agemono/potato.jpg" Width="120" Height="120" />
-                    <TextBlock Text="ポテトフライ" FontSize="16" HorizontalAlignment="Center" />
-                    <TextBlock Text="¥400" FontSize="14" HorizontalAlignment="Center" />
+                    <Image Source="Images/yakitori/hatutare.jpg" Width="120" Height="120" />
+                    <TextBlock Text="ハツ" FontSize="16" HorizontalAlignment="Center" />
+                    <TextBlock Text="¥320" FontSize="14" HorizontalAlignment="Center" />
                 </StackPanel>
             </Button>
             <Button Style="{StaticResource MenuItemStyle}" Click="MenuItem_Click" Tag="4">
                 <StackPanel>
-                    <Image Source="Images/agemono/kaman.jpg" Width="120" Height="120" />
-                    <TextBlock Text="カマンベールポテト" FontSize="16" HorizontalAlignment="Center" />
-                    <TextBlock Text="¥400" FontSize="14" HorizontalAlignment="Center" />
+                    <Image Source="Images/yakitori/negimatare.jpg" Width="120" Height="120" />
+                    <TextBlock Text="ねぎま" FontSize="16" HorizontalAlignment="Center" />
+                    <TextBlock Text="¥320" FontSize="14" HorizontalAlignment="Center" />
                 </StackPanel>
             </Button>
             <Button Style="{StaticResource MenuItemStyle}" Click="MenuItem_Click" Tag="5">
                 <StackPanel>
-                    <Image Source="Images/agemono/yamaiso.jpg" Width="120" Height="120" />
-                    <TextBlock Text="山芋の磯部揚げ" FontSize="16" HorizontalAlignment="Center" />
-                    <TextBlock Text="¥400" FontSize="14" HorizontalAlignment="Center" />
+                    <Image Source="Images/yakitori/rebatare.jpg" Width="120" Height="120" />
+                    <TextBlock Text="レバー" FontSize="16" HorizontalAlignment="Center" />
+                    <TextBlock Text="¥320" FontSize="14" HorizontalAlignment="Center" />
                 </StackPanel>
             </Button>
             <Button Style="{StaticResource MenuItemStyle}" Click="MenuItem_Click" Tag="6">
                 <StackPanel>
-                    <Image Source="Images/agemono/teba.jpg" Width="120" Height="120" />
-                    <TextBlock Text="手羽先の唐揚げ" FontSize="16" HorizontalAlignment="Center" />
-                    <TextBlock Text="¥500" FontSize="14" HorizontalAlignment="Center" />
+                    <Image Source="Images/yakitori/tukunetare.jpg" Width="120" Height="120" />
+                    <TextBlock Text="つくね" FontSize="16" HorizontalAlignment="Center" />
+                    <TextBlock Text="¥320" FontSize="14" HorizontalAlignment="Center" />
                 </StackPanel>
             </Button>
         </WrapPanel>

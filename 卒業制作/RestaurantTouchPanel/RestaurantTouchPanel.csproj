@@ -77,9 +77,28 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="IppinWindow.xaml.cs">
+      <DependentUpon>IppinWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="NabeWindow.xaml.cs">
+      <DependentUpon>NabeWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="OsusumeWindow.xaml.cs">
+      <DependentUpon>OsusumeWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ThankYouWindow.xaml.cs">
       <DependentUpon>ThankYouWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="TumamiWindow.xaml.cs">
+      <DependentUpon>TumamiWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="YakitoriWindow.xaml.cs">
+      <DependentUpon>YakitoriWindow.xaml</DependentUpon>
+    </Compile>
+    <Page Include="IppinWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -97,11 +116,27 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="NabeWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="OrderWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="OsusumeWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ThankYouWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TumamiWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="YakitoriWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -161,7 +196,45 @@
   <ItemGroup>
     <Resource Include="Images\agemono\teba.jpg" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Images\ippin\azitama.jpg" />
+    <Resource Include="Images\ippin\nannbann.jpg" />
+    <Resource Include="Images\ippin\ramen.jpg" />
+    <Resource Include="Images\ippin\torikatu.jpg" />
+    <Resource Include="Images\ippin\toriten.jpg" />
+    <Resource Include="Images\ippin\yamateppan.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\yakitori\hatutare.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\yakitori\kawatare.jpg" />
+    <Resource Include="Images\yakitori\momotare.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\yakitori\negimatare.jpg" />
+    <Resource Include="Images\yakitori\rebatare.jpg" />
+    <Resource Include="Images\yakitori\tukunetare.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\tumami\edamame.jpg" />
+    <Resource Include="Images\tumami\horumonn.jpg" />
+    <Resource Include="Images\tumami\konnbu.jpg" />
+    <Resource Include="Images\tumami\takowasa.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\tumami\kyabetu.jpg" />
+    <Resource Include="Images\tumami\kyuri.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\nabe\motu.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\nabe\tori.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\nabe\kumuti.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

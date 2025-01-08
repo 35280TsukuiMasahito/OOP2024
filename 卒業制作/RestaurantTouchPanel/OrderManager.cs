@@ -25,4 +25,11 @@ public class OrderManager {
     public void ClearOrders() {
         OrderItems.Clear();
     }
+
+    public int MaxOrderTypes { get; set; } = 7; // デフォルトで7種類まで制限
+
+    public bool CanAddOrder() {
+        return OrderItems.Count < MaxOrderTypes;
+    }
+
 }
