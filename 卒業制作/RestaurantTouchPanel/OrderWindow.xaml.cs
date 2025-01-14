@@ -19,7 +19,13 @@ namespace RestaurantTouchPanel {
                 this.Close();
                 menuWindow.ShowDialog();
             } else if ((sender as Button)?.Content.ToString() == "刺身・寿司・サラダ") {
+                var menuWindow = new SasimiWindow();
+                this.Close();
+                menuWindow.ShowDialog();
             } else if ((sender as Button)?.Content.ToString() == "アルコール①") {
+                var menuWindow = new BiruWindow();
+                this.Close();
+                menuWindow.ShowDialog();
             } else if ((sender as Button)?.Content.ToString() == "アルコール②") {
             } else if ((sender as Button)?.Content.ToString() == "ノンアル・ソフドリ") {
             } else if ((sender as Button)?.Content.ToString() == "デザート") {

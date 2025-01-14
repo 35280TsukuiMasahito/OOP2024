@@ -77,6 +77,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="BiruWindow.xaml.cs">
+      <DependentUpon>BiruWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CocktailWindow.xaml.cs">
+      <DependentUpon>CocktailWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="HighballWindow.xaml.cs">
+      <DependentUpon>HighballWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="IppinWindow.xaml.cs">
       <DependentUpon>IppinWindow.xaml</DependentUpon>
     </Compile>
@@ -85,6 +94,18 @@
     </Compile>
     <Compile Include="OsusumeWindow.xaml.cs">
       <DependentUpon>OsusumeWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SaladWindow.xaml.cs">
+      <DependentUpon>SaladWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SasimiWindow.xaml.cs">
+      <DependentUpon>SasimiWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SourWindow.xaml.cs">
+      <DependentUpon>SourWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SushiWindow.xaml.cs">
+      <DependentUpon>SushiWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="ThankYouWindow.xaml.cs">
       <DependentUpon>ThankYouWindow.xaml</DependentUpon>
@@ -95,6 +116,18 @@
     <Compile Include="YakitoriWindow.xaml.cs">
       <DependentUpon>YakitoriWindow.xaml</DependentUpon>
     </Compile>
+    <Page Include="BiruWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CocktailWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="HighballWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="IppinWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -125,6 +158,22 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="OsusumeWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SaladWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SasimiWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SourWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SushiWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -234,6 +283,66 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\nabe\kumuti.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\nigiri\ebi.jpg" />
+    <Resource Include="Images\nigiri\ika.jpg" />
+    <Resource Include="Images\nigiri\maguro.jpg" />
+    <Resource Include="Images\nigiri\samon.jpg" />
+    <Resource Include="Images\nigiri\tubu.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\sasimi\sasimi1.jpg" />
+    <Resource Include="Images\sasimi\sasimima.jpg" />
+    <Resource Include="Images\sasimi\sasimisa.jpg" />
+    <Resource Include="Images\sasimi\sasimita.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\sasimi\sasimi2.jpg" />
+    <Resource Include="Images\sasimi\sasimi3.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\nigiri\azi.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\sarada\potesara.jpg" />
+    <Resource Include="Images\sarada\siza.jpg" />
+    <Resource Include="Images\sarada\tomasara.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\sarada\torimayo.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\biru\aka.jpg" />
+    <Resource Include="Images\biru\ex.jpg" />
+    <Resource Include="Images\biru\nama.jpg" />
+    <Resource Include="Images\biru\namasyo.jpg" />
+    <Resource Include="Images\biru\siro.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\high\kaku.jpg" />
+    <Resource Include="Images\high\kokuhigh.jpg" />
+    <Resource Include="Images\high\nikka.jpg" />
+    <Resource Include="Images\high\yamazaki.jpg" />
+    <Resource Include="Images\high\zinzyahigh.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Sour\itigo.jpg" />
+    <Resource Include="Images\Sour\mikan.jpg" />
+    <Resource Include="Images\Sour\pain.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Sour\hakuto.png" />
+    <Resource Include="Images\Sour\kyohou.png" />
+    <Resource Include="Images\Sour\remon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\kakuteru\kasiore.jpg" />
+    <Resource Include="Images\kakuteru\kasisusoda.jpg" />
+    <Resource Include="Images\kakuteru\kasisuuron.jpg" />
+    <Resource Include="Images\kakuteru\mosuko.jpg" />
+    <Resource Include="Images\kakuteru\regepan.jpg" />
+    <Resource Include="Images\kakuteru\sukuryu.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
