@@ -80,11 +80,29 @@
     <Compile Include="BiruWindow.xaml.cs">
       <DependentUpon>BiruWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="BottleSetWindow.xaml.cs">
+      <DependentUpon>BottleSetWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="BottleWindow.xaml.cs">
+      <DependentUpon>BottleWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CakeWindow.xaml.cs">
+      <DependentUpon>CakeWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="CocktailWindow.xaml.cs">
       <DependentUpon>CocktailWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Drink1Window.xaml.cs">
+      <DependentUpon>Drink1Window.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Drink2Window.xaml.cs">
+      <DependentUpon>Drink2Window.xaml</DependentUpon>
+    </Compile>
     <Compile Include="HighballWindow.xaml.cs">
       <DependentUpon>HighballWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="IceWindow.xaml.cs">
+      <DependentUpon>IceWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="IppinWindow.xaml.cs">
       <DependentUpon>IppinWindow.xaml</DependentUpon>
@@ -92,14 +110,23 @@
     <Compile Include="NabeWindow.xaml.cs">
       <DependentUpon>NabeWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="NonAlcoholWindow.xaml.cs">
+      <DependentUpon>NonAlcoholWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="OsusumeWindow.xaml.cs">
       <DependentUpon>OsusumeWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SakeWindow.xaml.cs">
+      <DependentUpon>SakeWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="SaladWindow.xaml.cs">
       <DependentUpon>SaladWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="SasimiWindow.xaml.cs">
       <DependentUpon>SasimiWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ShochuWindow.xaml.cs">
+      <DependentUpon>ShochuWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="SourWindow.xaml.cs">
       <DependentUpon>SourWindow.xaml</DependentUpon>
@@ -120,11 +147,35 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="BottleSetWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="BottleWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CakeWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="CocktailWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Drink1Window.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Drink2Window.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="HighballWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="IceWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -153,6 +204,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="NonAlcoholWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="OrderWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -161,11 +216,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="SakeWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="SaladWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="SasimiWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ShochuWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -343,6 +406,70 @@
     <Resource Include="Images\kakuteru\mosuko.jpg" />
     <Resource Include="Images\kakuteru\regepan.jpg" />
     <Resource Include="Images\kakuteru\sukuryu.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\hi\kyohohi.jpg" />
+    <Resource Include="Images\hi\mattya.jpg" />
+    <Resource Include="Images\hi\remonhi.jpg" />
+    <Resource Include="Images\hi\uronhi.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\hi\aoringohi.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\bottle\kittyomu.jpg" />
+    <Resource Include="Images\bottle\kuro.jpg" />
+    <Resource Include="Images\bottle\kyogetu.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\sake\hakkai.jpg" />
+    <Resource Include="Images\sake\kiku.jpg" />
+    <Resource Include="Images\sake\kosino.jpg" />
+    <Resource Include="Images\sake\mori.jpg" />
+    <Resource Include="Images\sake\seki.jpg" />
+    <Resource Include="Images\sake\tomino.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\set\ice.jpg" />
+    <Resource Include="Images\set\suraisu.jpg" />
+    <Resource Include="Images\set\tannsann.jpg" />
+    <Resource Include="Images\set\ume.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\set\kat.jpg" />
+    <Resource Include="Images\set\mizu.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\drink1\cafe.jpg" />
+    <Resource Include="Images\drink1\karu.jpg" />
+    <Resource Include="Images\drink1\kohi.jpg" />
+    <Resource Include="Images\drink1\ryokutya.jpg" />
+    <Resource Include="Images\drink1\uron.jpg" />
+    <Resource Include="Images\drink1\zyasumin.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\drink1\ase.jpg" />
+    <Resource Include="Images\drink1\gurehuru.jpg" />
+    <Resource Include="Images\drink1\kora.jpg" />
+    <Resource Include="Images\drink1\meron.jpg" />
+    <Resource Include="Images\drink1\oren.jpg" />
+    <Resource Include="Images\drink1\zinzya.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\kakuteru\syari.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\kakuteru\sama.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\ice\banira.jpg" />
+    <Resource Include="Images\ice\mattyaice.jpg" />
+    <Resource Include="Images\ice\tyoko.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\ice\mirukure.jpg" />
+    <Resource Include="Images\ice\thira.jpg" />
+    <Resource Include="Images\ice\tizu.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

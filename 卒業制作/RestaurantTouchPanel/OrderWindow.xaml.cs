@@ -27,7 +27,13 @@ namespace RestaurantTouchPanel {
                 this.Close();
                 menuWindow.ShowDialog();
             } else if ((sender as Button)?.Content.ToString() == "アルコール②") {
+                var menuWindow = new ShochuWindow();
+                this.Close();
+                menuWindow.ShowDialog();
             } else if ((sender as Button)?.Content.ToString() == "ノンアル・ソフドリ") {
+                var menuWindow = new Drink1Window();
+                this.Close();
+                menuWindow.ShowDialog();
             } else if ((sender as Button)?.Content.ToString() == "デザート") {
             } else if ((sender as Button)?.Content.ToString() == "サービス") {
             } else if ((sender as Button)?.Content.ToString() == "特選メニュー") {
