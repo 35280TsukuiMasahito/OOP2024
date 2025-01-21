@@ -58,18 +58,23 @@ namespace RestaurantTouchPanel {
         }
 
         private void CheckButton_Click(object sender, RoutedEventArgs e) {
-            int numberOfPeople = App.PeopleCount; // グローバルから取得
-            CheckWindow checkWindow = new CheckWindow(numberOfPeople);
+            int numberOfPeople = 4; // 実際には人数入力フォームから取得
+            var checkWindow = new CheckWindow(numberOfPeople);
+            this.Close(); // 現在のウィンドウを閉じる
             checkWindow.Show();
-            this.Close();
         }
+
 
 
 
         private void OrderHistoryButton_Click(object sender, RoutedEventArgs e) {
-            // 注文履歴確認ボタンがクリックされた場合の処理
-            MessageBox.Show("注文履歴確認画面へ進みます。", "注文履歴", MessageBoxButton.OK, MessageBoxImage.Information);
+            // 注文履歴ウィンドウを開く
+            var historyWindow = new OrderHistoryWindow();
+            this.Close(); // 現在のウィンドウを閉じる
+            historyWindow.Show(); // モーダルでなく通常表示
         }
+
+
 
         private void RecommendedButton_Click(object sender, RoutedEventArgs e) {
             // おすすめ商品ボタンがクリックされた場合の処理

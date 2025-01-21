@@ -45,7 +45,9 @@ namespace RestaurantTouchPanel {
         }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e) {
+            var menuWindow = new OrderWindow();
             this.Close();
+            menuWindow.ShowDialog();
         }
     }
 }

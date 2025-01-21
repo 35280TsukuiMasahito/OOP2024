@@ -1,4 +1,6 @@
-﻿using System;
+﻿using RestaurantTouchPanel;
+using System;
+using System.Collections.Generic;
 using System.Data.SQLite;
 
 public class DatabaseManager {
@@ -68,5 +70,29 @@ public class DatabaseManager {
             Console.WriteLine($"Error calculating total amount: {ex.Message}");
             return 0;
         }
+    }
+
+    public static List<OrderHistory> GetOrderHistory() {
+        var orderHistory = new List<OrderHistory>();
+
+        using (var connection = new SQLiteConnection(ConnectionString)) {
+            connection.Open();
+
+            string query = "SELECT Name, Quantity, Price, Total FROM Orders";
+            using (var command = new SQLiteCommand(query, connection)) {
+                using (var reader = command.ExecuteReader()) {
+                    while (reader.Read()) {
+                        orderHistory.Add(new OrderHistory {
+                            Name = reader["Name"].ToString(),
+                            Quantity = int.Parse(reader["Quantity"].ToString()),
+                            Price = int.Parse(reader["Price"].ToString()),
+                            Total = int.Parse(reader["Total"].ToString())
+                        });
+                    }
+                }
+            }
+        }
+
+        return orderHistory;
     }
 }

@@ -73,7 +73,7 @@
         <!-- 下部のナビゲーションボタン -->
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,20,0,10">
             <Button Content="お会計" Style="{StaticResource NavigationButtonStyle}" Click="CheckButton_Click" />
-            <Button Content="注文履歴確認" Style="{StaticResource NavigationButtonStyle}" Click="OrderHistoryButton_Click" />
+            <Button Content="注文履歴" Style="{StaticResource NavigationButtonStyle}" Click="OrderHistoryButton_Click" />
             <Button Content="おすすめ商品" Style="{StaticResource NavigationButtonStyle}" Click="RecommendedButton_Click" />
         </StackPanel>
     </Grid>

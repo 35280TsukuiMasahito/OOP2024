@@ -116,6 +116,9 @@
     <Compile Include="NonAlcoholWindow.xaml.cs">
       <DependentUpon>NonAlcoholWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="OrderHistoryWindow.xaml.cs">
+      <DependentUpon>OrderHistoryWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="OsusumeWindow.xaml.cs">
       <DependentUpon>OsusumeWindow.xaml</DependentUpon>
     </Compile>
@@ -218,6 +221,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="NonAlcoholWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="OrderHistoryWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
