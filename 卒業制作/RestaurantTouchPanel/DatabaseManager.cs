@@ -6,7 +6,6 @@ public class DatabaseManager {
     private const string ConnectionString = "Data Source=" + DatabaseFile;
 
     public static void InitializeDatabase() {
-        // データベースファイルが存在しない場合、作成
         if (!System.IO.File.Exists(DatabaseFile)) {
             SQLiteConnection.CreateFile(DatabaseFile);
         }
@@ -14,7 +13,6 @@ public class DatabaseManager {
         using (var connection = new SQLiteConnection(ConnectionString)) {
             connection.Open();
 
-            // 注文テーブルの作成
             string createTableQuery = @"
                 CREATE TABLE IF NOT EXISTS Orders (
                     Id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -28,6 +26,7 @@ public class DatabaseManager {
             }
         }
     }
+
     public static void SaveOrder(string name, int quantity, int price) {
         Console.WriteLine($"Attempting to save order: {name}, Quantity: {quantity}, Price: {price}");
         try {
@@ -53,5 +52,21 @@ public class DatabaseManager {
         }
     }
 
+    public static int GetTotalAmount() {
+        try {
+            using (var connection = new SQLiteConnection(ConnectionString)) {
+                connection.Open();
 
+                string query = "SELECT SUM(Total) FROM Orders;";
+                using (var command = new SQLiteCommand(query, connection)) {
+                    var result = command.ExecuteScalar();
+                    return result != DBNull.Value ? Convert.ToInt32(result) : 0;
+                }
+            }
+        }
+        catch (Exception ex) {
+            Console.WriteLine($"Error calculating total amount: {ex.Message}");
+            return 0;
+        }
+    }
 }

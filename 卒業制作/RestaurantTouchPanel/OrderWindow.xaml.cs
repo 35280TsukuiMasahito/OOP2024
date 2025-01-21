@@ -3,9 +3,15 @@ using System.Windows.Controls;
 
 namespace RestaurantTouchPanel {
     public partial class OrderWindow : Window {
-        public OrderWindow() {
+        public int peoplecount;
+
+        public OrderWindow() : this(1) { } // 引数なしコンストラクタで peoplecount にデフォルト値を設定
+
+        public OrderWindow(int peoplecount) {
             InitializeComponent();
+            this.peoplecount = peoplecount;
         }
+
 
         private void CategoryButton_Click(object sender, RoutedEventArgs e) {
             // カテゴリボタンがクリックされた場合の処理
@@ -52,11 +58,13 @@ namespace RestaurantTouchPanel {
         }
 
         private void CheckButton_Click(object sender, RoutedEventArgs e) {
-            // CheckWindowを開き、現在のウィンドウを閉じる
-            CheckWindow checkWindow = new CheckWindow();
+            int numberOfPeople = App.PeopleCount; // グローバルから取得
+            CheckWindow checkWindow = new CheckWindow(numberOfPeople);
             checkWindow.Show();
-            this.Close(); // 現在のウィンドウを閉じる
+            this.Close();
         }
+
+
 
         private void OrderHistoryButton_Click(object sender, RoutedEventArgs e) {
             // 注文履歴確認ボタンがクリックされた場合の処理

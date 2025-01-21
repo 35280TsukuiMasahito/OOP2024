@@ -1,90 +1,51 @@
-﻿using System.Linq;
+﻿using System;
+using System.Data.SQLite;
+using System.Linq;
 using System.Windows;
-using System.Windows.Controls;
-using static RestaurantTouchPanel.MenuSelectionWindow;
 
 namespace RestaurantTouchPanel {
     public partial class CheckWindow : Window {
-        public CheckWindow() {
+        private int peopleCount;
+        private int totalAmount;
+
+        public CheckWindow(int peopleCount) {
             InitializeComponent();
-            this.Loaded += CheckWindow_Loaded;
+            this.peopleCount = peopleCount;
+
+            // データベースから合計金額を取得
+            totalAmount = CalculateTotalAmount();
+
+            // 合計金額と一人当たりの金額を表示
+            TotalAmountTextBlock.Text = $"合計金額: ¥{totalAmount}";
+            AmountPerPersonTextBlock.Text = $"一人当たり: ¥{totalAmount / peopleCount}";
         }
 
-        private void CheckWindow_Loaded(object sender, RoutedEventArgs e) {
-            LoadOrderSummary();
-            DisplayTotalAmount();
-        }
+        private int CalculateTotalAmount() {
+            int total = 0;
+            const string connectionString = @"Data Source=C:\Users\infosys\Documents\Orders.db";
 
-        private void LoadOrderSummary() {
-            OrderSummaryListBox.Items.Clear();
-            foreach (var item in OrderManager.Instance.OrderItems) {
-                OrderSummaryListBox.Items.Add(item.ToString());
+            try {
+                using (var connection = new SQLiteConnection(connectionString)) {
+                    connection.Open();
+
+                    string query = "SELECT SUM(Total) FROM Orders";
+                    using (var command = new SQLiteCommand(query, connection)) {
+                        var result = command.ExecuteScalar();
+                        if (result != DBNull.Value) {
+                            total = Convert.ToInt32(result);
+                        }
+                    }
+                }
             }
-        }
-
-        private void DisplayTotalAmount() {
-            int total = OrderManager.Instance.OrderItems.Sum(item => item.Quantity * item.Price);
-            TotalAmountText.Text = $"合計金額: ¥{total}";
-        }
-
-        private void CalculatePerPerson_Click(object sender, RoutedEventArgs e) {
-            if (int.TryParse(PeopleCountTextBox.Text, out int peopleCount) && peopleCount > 0) {
-                int total = OrderManager.Instance.OrderItems.Sum(item => item.Quantity * item.Price);
-                int perPerson = total / peopleCount;
-                PerPersonAmountText.Text = $"一人当たりの金額: ¥{perPerson}";
-            } else {
-                MessageBox.Show("人数を正しい形式で入力してください。", "エラー", MessageBoxButton.OK, MessageBoxImage.Warning);
+            catch (Exception ex) {
+                MessageBox.Show($"合計金額の計算中にエラーが発生しました: {ex.Message}");
             }
+
+            return total;
         }
 
-        private void CloseWindow_Click(object sender, RoutedEventArgs e) {
+        private void CloseButton_Click(object sender, RoutedEventArgs e) {
             this.Close();
-        }
-
-        private void CategoryButton_Click(object sender, RoutedEventArgs e) {
-            // カテゴリボタンがクリックされた場合の処理
-            // 料理ボタンがクリックされた場合
-            if ((sender as Button)?.Content.ToString() == "料理") {
-                var menuWindow = new MenuSelectionWindow();
-                this.Close();
-                menuWindow.ShowDialog(); // モーダルで開く
-            } else if ((sender as Button)?.Content.ToString() == "おすすめ・鍋") {
-                var menuWindow = new OsusumeWindow();
-                this.Close();
-                menuWindow.ShowDialog();
-            } else if ((sender as Button)?.Content.ToString() == "刺身・寿司・サラダ") {
-                var menuWindow = new SasimiWindow();
-                this.Close();
-                menuWindow.ShowDialog();
-            } else if ((sender as Button)?.Content.ToString() == "アルコール①") {
-                var menuWindow = new BiruWindow();
-                this.Close();
-                menuWindow.ShowDialog();
-            } else if ((sender as Button)?.Content.ToString() == "アルコール②") {
-                var menuWindow = new ShochuWindow();
-                this.Close();
-                menuWindow.ShowDialog();
-            } else if ((sender as Button)?.Content.ToString() == "ノンアル・ソフドリ") {
-                var menuWindow = new Drink1Window();
-                this.Close();
-                menuWindow.ShowDialog();
-            } else if ((sender as Button)?.Content.ToString() == "デザート") {
-                var menuWindow = new IceWindow();
-                this.Close();
-                menuWindow.ShowDialog();
-            } else if ((sender as Button)?.Content.ToString() == "サービス") {
-                var menuWindow = new ServiceWindow();
-                this.Close();
-                menuWindow.ShowDialog();
-            } else if ((sender as Button)?.Content.ToString() == "特選メニュー") {
-                var menuWindow = new TokusenWindow();
-                this.Close();
-                menuWindow.ShowDialog();
-            } else if ((sender as Button)?.Content.ToString() == "トップ画面") {
-                var menuWindow = new OrderWindow();
-                this.Close();
-                menuWindow.ShowDialog();
-            }
         }
     }
 }

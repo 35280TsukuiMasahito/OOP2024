@@ -14,11 +14,11 @@
             <Setter Property="BorderThickness" Value="2" />
             <Style.Triggers>
                 <!-- ボタンが選択された状態 -->
-                <Trigger Property="Tag" Value="Selected">
+                <DataTrigger Binding="{Binding Tag, RelativeSource={RelativeSource Self}}" Value="Selected">
                     <Setter Property="Background" Value="#FFFDD548" />
-                    <Setter Property="BorderBrush" Value="Gray" />
+                    <Setter Property="BorderBrush" Value="DarkOrange" />
                     <Setter Property="FontWeight" Value="Bold" />
-                </Trigger>
+                </DataTrigger>
             </Style.Triggers>
         </Style>
     </Window.Resources>
@@ -27,11 +27,14 @@
         <Grid.Background>
             <ImageBrush ImageSource="Images/wafu.jpg" Stretch="UniformToFill" />
         </Grid.Background>
+
         <!-- タイトル -->
-        <TextBlock Text="利用人数を選択してください" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,50,0,20" FontSize="30" Foreground="White" FontWeight="Bold"/>
+        <TextBlock Text="利用人数を選択してください" HorizontalAlignment="Center" VerticalAlignment="Top"
+                   Margin="0,50,0,20" FontSize="30" Foreground="White" FontWeight="Bold" />
 
         <!-- 利用人数を選択するボタンを配置 -->
-        <UniformGrid Rows="2" Columns="5" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10" Width="600" Height="150">
+        <UniformGrid Rows="2" Columns="5" HorizontalAlignment="Center" VerticalAlignment="Center"
+                     Margin="10" Width="600" Height="150">
             <!-- ボタンにスタイルを適用 -->
             <Button Content="1 人" Click="PeopleButton_Click" Style="{StaticResource PeopleButtonStyle}" />
             <Button Content="2 人" Click="PeopleButton_Click" Style="{StaticResource PeopleButtonStyle}" />
@@ -46,7 +49,8 @@
         </UniformGrid>
 
         <!-- 次へボタン -->
-        <Button x:Name="NextButton" Content="次へ" Width="200" Height="60" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="50,10,50,50" Click="NextButton_Click" IsEnabled="False">
+        <Button x:Name="NextButton" Content="次へ" Width="200" Height="60" HorizontalAlignment="Center" VerticalAlignment="Bottom"
+                Margin="50,10,50,50" Click="NextButton_Click" IsEnabled="False">
             <Button.Style>
                 <Style TargetType="Button">
                     <Setter Property="Background" Value="#1877f2" />
@@ -55,12 +59,11 @@
                         <Setter.Value>
                             <ControlTemplate TargetType="Button">
                                 <Border x:Name="border" CornerRadius="15" Background="{TemplateBinding Background}">
-                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
                                 </Border>
                                 <ControlTemplate.Triggers>
                                     <Trigger Property="IsMouseOver" Value="True">
                                         <Setter TargetName="border" Property="Background" Value="#13529c" />
-                                        <!-- マウスオーバー時の背景色を変更 -->
                                     </Trigger>
                                 </ControlTemplate.Triggers>
                             </ControlTemplate>
