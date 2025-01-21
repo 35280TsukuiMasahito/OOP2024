@@ -89,6 +89,9 @@
     <Compile Include="CakeWindow.xaml.cs">
       <DependentUpon>CakeWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="CheckWindow.xaml.cs">
+      <DependentUpon>CheckWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="CocktailWindow.xaml.cs">
       <DependentUpon>CocktailWindow.xaml</DependentUpon>
     </Compile>
@@ -162,6 +165,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="CakeWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CheckWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

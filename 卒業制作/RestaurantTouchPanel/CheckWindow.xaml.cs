@@ -1,10 +1,44 @@
-﻿using System.Windows;
+﻿using System.Linq;
+using System.Windows;
 using System.Windows.Controls;
+using static RestaurantTouchPanel.MenuSelectionWindow;
 
 namespace RestaurantTouchPanel {
-    public partial class OrderWindow : Window {
-        public OrderWindow() {
+    public partial class CheckWindow : Window {
+        public CheckWindow() {
             InitializeComponent();
+            this.Loaded += CheckWindow_Loaded;
+        }
+
+        private void CheckWindow_Loaded(object sender, RoutedEventArgs e) {
+            LoadOrderSummary();
+            DisplayTotalAmount();
+        }
+
+        private void LoadOrderSummary() {
+            OrderSummaryListBox.Items.Clear();
+            foreach (var item in OrderManager.Instance.OrderItems) {
+                OrderSummaryListBox.Items.Add(item.ToString());
+            }
+        }
+
+        private void DisplayTotalAmount() {
+            int total = OrderManager.Instance.OrderItems.Sum(item => item.Quantity * item.Price);
+            TotalAmountText.Text = $"合計金額: ¥{total}";
+        }
+
+        private void CalculatePerPerson_Click(object sender, RoutedEventArgs e) {
+            if (int.TryParse(PeopleCountTextBox.Text, out int peopleCount) && peopleCount > 0) {
+                int total = OrderManager.Instance.OrderItems.Sum(item => item.Quantity * item.Price);
+                int perPerson = total / peopleCount;
+                PerPersonAmountText.Text = $"一人当たりの金額: ¥{perPerson}";
+            } else {
+                MessageBox.Show("人数を正しい形式で入力してください。", "エラー", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+        }
+
+        private void CloseWindow_Click(object sender, RoutedEventArgs e) {
+            this.Close();
         }
 
         private void CategoryButton_Click(object sender, RoutedEventArgs e) {
@@ -46,26 +80,11 @@ namespace RestaurantTouchPanel {
                 var menuWindow = new TokusenWindow();
                 this.Close();
                 menuWindow.ShowDialog();
-            } else {
-                MessageBox.Show($"{(sender as Button)?.Content}がクリックされました。");
+            } else if ((sender as Button)?.Content.ToString() == "トップ画面") {
+                var menuWindow = new OrderWindow();
+                this.Close();
+                menuWindow.ShowDialog();
             }
-        }
-
-        private void CheckButton_Click(object sender, RoutedEventArgs e) {
-            // CheckWindowを開き、現在のウィンドウを閉じる
-            CheckWindow checkWindow = new CheckWindow();
-            checkWindow.Show();
-            this.Close(); // 現在のウィンドウを閉じる
-        }
-
-        private void OrderHistoryButton_Click(object sender, RoutedEventArgs e) {
-            // 注文履歴確認ボタンがクリックされた場合の処理
-            MessageBox.Show("注文履歴確認画面へ進みます。", "注文履歴", MessageBoxButton.OK, MessageBoxImage.Information);
-        }
-
-        private void RecommendedButton_Click(object sender, RoutedEventArgs e) {
-            // おすすめ商品ボタンがクリックされた場合の処理
-            MessageBox.Show("おすすめ商品画面へ進みます。", "おすすめ商品", MessageBoxButton.OK, MessageBoxImage.Information);
         }
     }
 }
