@@ -125,6 +125,9 @@
     <Compile Include="SasimiWindow.xaml.cs">
       <DependentUpon>SasimiWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ServiceWindow.xaml.cs">
+      <DependentUpon>ServiceWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ShochuWindow.xaml.cs">
       <DependentUpon>ShochuWindow.xaml</DependentUpon>
     </Compile>
@@ -136,6 +139,9 @@
     </Compile>
     <Compile Include="ThankYouWindow.xaml.cs">
       <DependentUpon>ThankYouWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TokusenWindow.xaml.cs">
+      <DependentUpon>TokusenWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="TumamiWindow.xaml.cs">
       <DependentUpon>TumamiWindow.xaml</DependentUpon>
@@ -228,6 +234,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="ServiceWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ShochuWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -241,6 +251,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ThankYouWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TokusenWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -470,6 +484,20 @@
     <Resource Include="Images\ice\mirukure.jpg" />
     <Resource Include="Images\ice\thira.jpg" />
     <Resource Include="Images\ice\tizu.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\service\hasi.jpg" />
+    <Resource Include="Images\service\hiza.jpg" />
+    <Resource Include="Images\service\osi.jpg" />
+    <Resource Include="Images\service\sara.jpg" />
+    <Resource Include="Images\service\supu.jpg" />
+    <Resource Include="Images\service\zabu.jpg" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Images\toku\gyu.jpg" />
+    <Resource Include="Images\toku\kama.jpg" />
+    <Resource Include="Images\toku\siba.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

@@ -64,7 +64,7 @@
             <Button Content="刺身・寿司・サラダ" Style="{StaticResource CategoryButtonStyle}" Click="CategoryButton_Click" />
             <Button Content="アルコール①" Style="{StaticResource CategoryButtonStyle}" Click="CategoryButton_Click" />
             <Button Content="アルコール②" Style="{StaticResource CategoryButtonStyle}" Click="CategoryButton_Click" />
-            <Button Content="ノンアル・ソフトドリンク" Style="{StaticResource CategoryButtonStyle}" Click="CategoryButton_Click" />
+            <Button Content="ノンアル・ソフドリ" Style="{StaticResource CategoryButtonStyle}" Click="CategoryButton_Click" />
             <Button Content="デザート" Style="{StaticResource CategoryButtonStyle}" Click="CategoryButton_Click" />
             <Button Content="サービス" Style="{StaticResource CategoryButtonStyle}" Click="CategoryButton_Click" />
             <Button Content="特選メニュー" Style="{StaticResource CategoryButtonStyle}" Click="CategoryButton_Click" />

@@ -35,8 +35,17 @@ namespace RestaurantTouchPanel {
                 this.Close();
                 menuWindow.ShowDialog();
             } else if ((sender as Button)?.Content.ToString() == "デザート") {
+                var menuWindow = new IceWindow();
+                this.Close();
+                menuWindow.ShowDialog();
             } else if ((sender as Button)?.Content.ToString() == "サービス") {
+                var menuWindow = new ServiceWindow();
+                this.Close();
+                menuWindow.ShowDialog();
             } else if ((sender as Button)?.Content.ToString() == "特選メニュー") {
+                var menuWindow = new TokusenWindow();
+                this.Close();
+                menuWindow.ShowDialog();
             } else {
                 MessageBox.Show($"{(sender as Button)?.Content}がクリックされました。");
             }

@@ -1,25 +1,22 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using static RestaurantTouchPanel.MenuSelectionWindow;
 
 namespace RestaurantTouchPanel {
-    public partial class Drink2Window : Window {
-        private const int MaxOrderTypes = 7; // 注文の種類数の制限
-
-        public Drink2Window() {
+    public partial class TokusenWindow : Window {
+        public TokusenWindow() {
             InitializeComponent();
-            this.Loaded += Drink2Window_Loaded;
+            this.Loaded += TokusenWindow_Loaded;
         }
 
-        private void Drink2Window_Loaded(object sender, RoutedEventArgs e) {
+        private void TokusenWindow_Loaded(object sender, RoutedEventArgs e) {
             UpdateOrderList();
         }
 
         private void MenuItem_Click(object sender, RoutedEventArgs e) {
-            if (OrderManager.Instance.OrderItems.Count >= MaxOrderTypes) {
-                MessageBox.Show($"注文は{MaxOrderTypes}種類までです。", "注文制限", MessageBoxButton.OK, MessageBoxImage.Warning);
+            if (OrderManager.Instance.OrderItems.Count >= 7) {
+                MessageBox.Show("注文は7種類までです。", "注文制限", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
 
@@ -29,28 +26,16 @@ namespace RestaurantTouchPanel {
 
                 switch (button.Tag) {
                     case "1":
-                        productName = "コーラ";
-                        productPrice = 280;
+                        productName = "芝エビの唐揚げ";
+                        productPrice = 480;
                         break;
                     case "2":
-                        productName = "メロンソーダ";
-                        productPrice = 280;
+                        productName = "牛串";
+                        productPrice = 320;
                         break;
                     case "3":
-                        productName = "ジンジャエール";
-                        productPrice = 280;
-                        break;
-                    case "4":
-                        productName = "オレンジジュース";
-                        productPrice = 280;
-                        break;
-                    case "5":
-                        productName = "グレープフルーツ";
-                        productPrice = 280;
-                        break;
-                    case "6":
-                        productName = "アセロラジュース";
-                        productPrice = 280;
+                        productName = "鶏釜飯";
+                        productPrice = 680;
                         break;
                 }
 
@@ -162,25 +147,6 @@ namespace RestaurantTouchPanel {
                 var menuWindow = new OrderWindow();
                 this.Close();
                 menuWindow.ShowDialog();
-            }
-        }
-
-        private void SubCategoryButton_Click(object sender, RoutedEventArgs e) {
-            if (sender is Button button) {
-                string subCategory = button.Content.ToString();
-
-                if (subCategory == "ソフドリ1") {
-                    var drink1Window = new Drink1Window();
-                    drink1Window.Show();
-                } else if (subCategory == "ソフドリ2") {
-                    var drink2Window = new Drink2Window();
-                    drink2Window.Show();
-                } else if (subCategory == "ノンアル") {
-                    var nonAlcoholWindow = new NonAlcoholWindow();
-                    nonAlcoholWindow.Show();
-                }
-
-                this.Close();
             }
         }
     }

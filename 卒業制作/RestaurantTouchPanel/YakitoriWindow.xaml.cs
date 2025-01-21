@@ -140,16 +140,48 @@ namespace RestaurantTouchPanel {
         }
 
         private void CategoryButton_Click(object sender, RoutedEventArgs e) {
-            if (sender is Button button) {
-                string content = button.Content.ToString();
-
-                if (content == "トップ画面") {
-                    var orderWindow = new OrderWindow();
-                    orderWindow.Show();
-                    this.Close();
-                } else {
-                    MessageBox.Show($"{content} カテゴリが選択されました。", "カテゴリ選択", MessageBoxButton.OK, MessageBoxImage.Information);
-                }
+            // カテゴリボタンがクリックされた場合の処理
+            // 料理ボタンがクリックされた場合
+            if ((sender as Button)?.Content.ToString() == "料理") {
+                var menuWindow = new MenuSelectionWindow();
+                this.Close();
+                menuWindow.ShowDialog(); // モーダルで開く
+            } else if ((sender as Button)?.Content.ToString() == "おすすめ・鍋") {
+                var menuWindow = new OsusumeWindow();
+                this.Close();
+                menuWindow.ShowDialog();
+            } else if ((sender as Button)?.Content.ToString() == "刺身・寿司・サラダ") {
+                var menuWindow = new SasimiWindow();
+                this.Close();
+                menuWindow.ShowDialog();
+            } else if ((sender as Button)?.Content.ToString() == "アルコール①") {
+                var menuWindow = new BiruWindow();
+                this.Close();
+                menuWindow.ShowDialog();
+            } else if ((sender as Button)?.Content.ToString() == "アルコール②") {
+                var menuWindow = new ShochuWindow();
+                this.Close();
+                menuWindow.ShowDialog();
+            } else if ((sender as Button)?.Content.ToString() == "ノンアル・ソフドリ") {
+                var menuWindow = new Drink1Window();
+                this.Close();
+                menuWindow.ShowDialog();
+            } else if ((sender as Button)?.Content.ToString() == "デザート") {
+                var menuWindow = new IceWindow();
+                this.Close();
+                menuWindow.ShowDialog();
+            } else if ((sender as Button)?.Content.ToString() == "サービス") {
+                var menuWindow = new ServiceWindow();
+                this.Close();
+                menuWindow.ShowDialog();
+            } else if ((sender as Button)?.Content.ToString() == "特選メニュー") {
+                var menuWindow = new TokusenWindow();
+                this.Close();
+                menuWindow.ShowDialog();
+            } else if ((sender as Button)?.Content.ToString() == "トップ画面") {
+                var menuWindow = new OrderWindow();
+                this.Close();
+                menuWindow.ShowDialog();
             }
         }
 
