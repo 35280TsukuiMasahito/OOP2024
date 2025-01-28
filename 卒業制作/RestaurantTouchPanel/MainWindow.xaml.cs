@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace RestaurantTouchPanel {
@@ -12,9 +13,7 @@ namespace RestaurantTouchPanel {
         private void PeopleButton_Click(object sender, RoutedEventArgs e) {
             if (sender is Button button) {
                 // すでに選択されているボタンをリセット
-                if (_selectedButton != null) {
-                    _selectedButton.Tag = null; // 選択状態を解除
-                }
+                ResetPeopleButtonStyles();
 
                 // 新しく選択されたボタンを設定
                 button.Tag = "Selected";
@@ -29,12 +28,22 @@ namespace RestaurantTouchPanel {
 
                 // 次へボタンを有効化
                 NextButton.IsEnabled = true;
+
+                Console.WriteLine($"Selected People Count: {App.PeopleCount}"); // デバッグ用ログ
+            }
+        }
+
+        private void ResetPeopleButtonStyles() {
+            foreach (var child in PeopleButtonGrid.Children) {
+                if (child is Button btn) {
+                    btn.Tag = null; // すべてのボタンの選択状態をリセット
+                }
             }
         }
 
         private void NextButton_Click(object sender, RoutedEventArgs e) {
             // OrderWindow を開き、現在のウィンドウを閉じる
-            var orderWindow = new OrderWindow();
+            var orderWindow = new OrderWindow(App.PeopleCount);
             orderWindow.Show();
             this.Close();
         }

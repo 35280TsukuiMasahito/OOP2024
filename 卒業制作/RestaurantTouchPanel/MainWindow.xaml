@@ -33,8 +33,9 @@
                    Margin="0,50,0,20" FontSize="30" Foreground="White" FontWeight="Bold" />
 
         <!-- 利用人数を選択するボタンを配置 -->
-        <UniformGrid Rows="2" Columns="5" HorizontalAlignment="Center" VerticalAlignment="Center"
-                     Margin="10" Width="600" Height="150">
+        <UniformGrid x:Name="PeopleButtonGrid" Rows="2" Columns="5" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10" Width="600" Height="150">
+
+
             <!-- ボタンにスタイルを適用 -->
             <Button Content="1 人" Click="PeopleButton_Click" Style="{StaticResource PeopleButtonStyle}" />
             <Button Content="2 人" Click="PeopleButton_Click" Style="{StaticResource PeopleButtonStyle}" />
