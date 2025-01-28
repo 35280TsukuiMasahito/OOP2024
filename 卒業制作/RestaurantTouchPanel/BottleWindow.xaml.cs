@@ -90,10 +90,14 @@ namespace RestaurantTouchPanel {
 
         private void ConfirmOrder_Click(object sender, RoutedEventArgs e) {
             SaveOrdersToDatabase();
+
+            var thankYouWindow = new ThankYouWindow();
+            thankYouWindow.Show();
+
             OrderManager.Instance.ClearOrders();
             UpdateOrderList();
 
-            MessageBox.Show("注文が確定しました。ありがとうございました！", "確認", MessageBoxButton.OK, MessageBoxImage.Information);
+            this.Close();
         }
 
         private void ClearOrders_Click(object sender, RoutedEventArgs e) {

@@ -77,8 +77,7 @@ namespace RestaurantTouchPanel {
 
 
         private void RecommendedButton_Click(object sender, RoutedEventArgs e) {
-            // おすすめ商品ボタンがクリックされた場合の処理
-            MessageBox.Show("おすすめ商品画面へ進みます。", "おすすめ商品", MessageBoxButton.OK, MessageBoxImage.Information);
+            
         }
     }
 }

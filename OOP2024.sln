@@ -181,6 +181,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "卒業制作", "卒業制�
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RestaurantTouchPanel", "卒業制作\RestaurantTouchPanel\RestaurantTouchPanel.csproj", "{EDA7C0B3-92BA-4B44-8B3F-850463BF35C2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KitchenOrderManager", "卒業制作\KitchenOrderManager\KitchenOrderManager.csproj", "{917E8D11-FA91-464E-9CA6-E046E1452354}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -413,6 +415,10 @@ Global
 		{EDA7C0B3-92BA-4B44-8B3F-850463BF35C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EDA7C0B3-92BA-4B44-8B3F-850463BF35C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EDA7C0B3-92BA-4B44-8B3F-850463BF35C2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{917E8D11-FA91-464E-9CA6-E046E1452354}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{917E8D11-FA91-464E-9CA6-E046E1452354}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{917E8D11-FA91-464E-9CA6-E046E1452354}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{917E8D11-FA91-464E-9CA6-E046E1452354}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -487,6 +493,7 @@ Global
 		{DBC0A682-0A2C-4B1A-B6DA-4E35B271C146} = {90E74582-97D7-42E5-B0F2-DB9DD670D0B8}
 		{F0C572EF-850E-48DD-ACEE-46283FC6D8CC} = {3B234CC7-C1D5-4B22-BB91-28FA3AE9F9E8}
 		{EDA7C0B3-92BA-4B44-8B3F-850463BF35C2} = {D3330BF5-ECFE-4D91-A55C-CD70462FF131}
+		{917E8D11-FA91-464E-9CA6-E046E1452354} = {D3330BF5-ECFE-4D91-A55C-CD70462FF131}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C6BDA932-02D0-45AF-9870-D1746C173676}
