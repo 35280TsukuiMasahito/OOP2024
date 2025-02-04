@@ -42,10 +42,23 @@ namespace RestaurantTouchPanel {
         }
 
         private void NextButton_Click(object sender, RoutedEventArgs e) {
-            // OrderWindow を開き、現在のウィンドウを閉じる
-            var orderWindow = new OrderWindow(App.PeopleCount);
-            orderWindow.Show();
-            this.Close();
+            if (_selectedButton != null) {
+                string content = _selectedButton.Content.ToString(); // 例: "3 人"
+                int selectedPeople = int.Parse(content.Split(' ')[0]); // "3" を取得
+
+                // 🔥 PeopleCount を保存
+                App.PeopleCount = selectedPeople;
+                DatabaseManager.SavePeopleCount(selectedPeople); // データベースに保存
+
+                Console.WriteLine($"Saved People Count: {App.PeopleCount}");
+
+                var orderWindow = new OrderWindow(App.PeopleCount);
+                orderWindow.Show();
+                this.Close();
+            } else {
+                MessageBox.Show("人数を選択してください。", "警告", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
         }
+
     }
 }

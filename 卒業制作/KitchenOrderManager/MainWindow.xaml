@@ -3,15 +3,10 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="注文管理" Height="600" Width="800">
     <Grid>
-        <!-- タイトル -->
-        <TextBlock Text="注文管理システム" HorizontalAlignment="Center" VerticalAlignment="Top"
-                   FontSize="24" FontWeight="Bold" Margin="0,20,0,0" Foreground="White" />
-
-        <!-- データグリッド -->
+        <!-- データグリッド (注文一覧) -->
         <DataGrid x:Name="OrdersDataGrid" AutoGenerateColumns="False" 
-                  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="20,80,20,100" 
+                  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="20,20,20,100"
                   IsReadOnly="True" SelectionMode="Extended">
-            <!-- Extendedに変更して複数選択を許可 -->
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="50" />
                 <DataGridTextColumn Header="商品名" Binding="{Binding Name}" Width="200" />
@@ -22,11 +17,32 @@
             </DataGrid.Columns>
         </DataGrid>
 
-        <!-- ボタン -->
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,20">
-            <Button Content="調理中に変更" Width="120" Height="40" Margin="10" Click="SetCookingStatusButton_Click" />
-            <Button Content="提供済みに変更" Width="120" Height="40" Margin="10" Click="SetDeliveredStatusButton_Click" />
-            <Button Content="再読み込み" Width="120" Height="40" Margin="10" Click="ReloadButton_Click" />
-        </StackPanel>
+        <!-- ステータス・合計金額・ボタンエリア -->
+        <Grid VerticalAlignment="Bottom" Height="80" Margin="20">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*" />
+                <!-- 利用人数エリア -->
+                <ColumnDefinition Width="2*" />
+                <!-- 合計金額エリア -->
+                <ColumnDefinition Width="3*" />
+                <!-- ボタンエリア -->
+            </Grid.ColumnDefinitions>
+
+            <!-- 左下: 利用人数 -->
+            <TextBlock x:Name="PeopleCountText" Text="利用人数: 0 人" FontSize="16"
+                       VerticalAlignment="Center" HorizontalAlignment="Left" 
+                       Margin="10" />
+
+            <!-- 右下: 合計金額 -->
+            <TextBlock x:Name="TotalAmountText" Text="合計金額: ¥0" FontSize="16"
+                       VerticalAlignment="Center" HorizontalAlignment="Right"
+                       Margin="10" Grid.Column="1"/>
+
+            <!-- ボタンエリア -->
+            <StackPanel Orientation="Horizontal" Grid.Column="2" HorizontalAlignment="Center">
+                <Button Content="調理中" Width="120" Height="40" Margin="10" Click="SetCookingStatusButton_Click" />
+                <Button Content="提供済みに変更" Width="120" Height="40" Margin="10" Click="ChangeStatusButton_Click" />
+            </StackPanel>
+        </Grid>
     </Grid>
 </Window>

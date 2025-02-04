@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Windows;
 
 namespace RestaurantTouchPanel {
@@ -22,12 +23,14 @@ namespace RestaurantTouchPanel {
     }
 
     public class OrderHistory {
-        public int Id { get; set; } // 注文ID
-        public string Name { get; set; } // 商品名
-        public int Quantity { get; set; } // 数量
-        public int Price { get; set; } // 単価
-        public int Total { get; set; } // 合計
-        public string Status { get; set; } // ステータス（例: "調理中", "提供済み"）
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public int Quantity { get; set; }
+        public int Price { get; set; }
+        public int Total { get; set; }
+        public string Status { get; set; }
+        public DateTime OrderTime { get; set; } // 追加
     }
+
 
 }

@@ -1,15 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows;
 
 namespace KitchenOrderManager {
-    /// <summary>
-    /// App.xaml の相互作用ロジック
-    /// </summary>
     public partial class App : Application {
+        public static int PeopleCount { get; set; } = 1; // ✅ 初期値を1人に設定
+
+        protected override void OnStartup(StartupEventArgs e) {
+            base.OnStartup(e);
+            DatabaseManager.InitializeDatabase(); // データベース初期化 (RestaurantTouchPanelからコピー)
+        }
     }
 }
