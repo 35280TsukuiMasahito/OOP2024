@@ -1,7 +1,10 @@
 ﻿<Window x:Class="RestaurantTouchPanel.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="利用人数設定" Height="600" Width="800">
+        Title="利用人数設定" Height="600" Width="800"
+        ResizeMode="NoResize"
+        WindowStyle="SingleBorderWindow"
+        MaxWidth="800" MaxHeight="600">
 
     <Window.Resources>
         <Style x:Key="PeopleButtonStyle" TargetType="Button">
